@@ -11,8 +11,10 @@ public class PlacingScript : MonoBehaviour
     private bool IsDown;
     private bool IsLeft;
     private bool IsRight;
+    private List<GameObject> blocks;
     private void Start()
     {
+        blocks = new List<GameObject>();
         occupiedCells = new HashSet<Vector2>();
         PlaceInitialBuilding();
     }
@@ -34,7 +36,7 @@ public class PlacingScript : MonoBehaviour
     // Handle mouse input for placing blocks
     private void HandleMouseInput()
     {
-        if (Input.GetMouseButtonDown(0) && prefab!=null)
+        if (Input.GetMouseButtonDown(0) && prefab != null)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 gridPosition = SnapToGrid(mousePosition);
@@ -44,7 +46,25 @@ public class PlacingScript : MonoBehaviour
             {
                 GameObject newBlock = Instantiate(prefab, gridPosition, Quaternion.identity);
                 occupiedCells.Add(gridPosition);
+                blocks.Add(newBlock);
 
+            }
+        }
+        else if (Input.GetMouseButtonDown(1)) // Right-click to delete
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 gridPosition = SnapToGrid(mousePosition);
+
+            // Check if the grid position is occupied
+            if (occupiedCells.Contains(gridPosition))
+            {
+                GameObject blockToRemove = blocks.Find(block => (Vector2)block.transform.position == gridPosition);
+                if (blockToRemove != null)
+                {
+                    blocks.Remove(blockToRemove);
+                    occupiedCells.Remove(gridPosition);
+                    Destroy(blockToRemove);
+                }
             }
         }
     }
