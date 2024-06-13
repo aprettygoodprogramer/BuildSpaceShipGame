@@ -7,7 +7,8 @@ public class ShopManagerScript : MonoBehaviour
     public PlacingScript placingScript;
     public GameObject Hallway;
     public GameObject Thrustor;
-    public GameObject Armory; 
+    public GameObject Armory;
+    public GameObject SheildGeneratpr;
     public void setHallway()
     {
     placingScript.SetPrefab(Hallway);
@@ -21,5 +22,9 @@ public class ShopManagerScript : MonoBehaviour
     public void setArmory()
     {
         placingScript.SetPrefab(Armory);
+    }
+    public void setSheildGenerator()
+    {
+        placingScript.SetPrefab(SheildGeneratpr);
     }
 }
