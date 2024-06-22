@@ -6,6 +6,7 @@ public class PlacingScript : MonoBehaviour
 {
     public float gridSize = 1.0f;          // Define the size of each grid cell
     public GameObject prefab;              // Reference to the prefab to be instantiated
+    public Transform parentTransform;      // Reference to the parent GameObject's Transform
     private HashSet<Vector2> occupiedCells; // Set to track occupied grid cells
     private List<GameObject> blocks;       // List to track all instantiated blocks
 
@@ -27,7 +28,8 @@ public class PlacingScript : MonoBehaviour
         Vector2 centerPosition = SnapToGrid(Vector2.zero); // Center of the screen
         if (prefab != null)
         {
-            GameObject initialBlock = Instantiate(prefab, centerPosition, Quaternion.identity);
+            GameObject initialBlock = Instantiate(prefab, centerPosition, Quaternion.identity, parentTransform);
+            initialBlock.transform.localScale = Vector3.one * gridSize; // Set the scale of the initial block
             occupiedCells.Add(centerPosition);
             blocks.Add(initialBlock);
         }
@@ -44,7 +46,8 @@ public class PlacingScript : MonoBehaviour
             // Check if the grid position is already occupied
             if (!occupiedCells.Contains(gridPosition) && IsPositionAdjacent(gridPosition))
             {
-                GameObject newBlock = Instantiate(prefab, gridPosition, Quaternion.identity);
+                GameObject newBlock = Instantiate(prefab, gridPosition, Quaternion.identity, parentTransform);
+                newBlock.transform.localScale = Vector3.one * gridSize; // Set the scale of the new block
                 occupiedCells.Add(gridPosition);
                 blocks.Add(newBlock);
             }
