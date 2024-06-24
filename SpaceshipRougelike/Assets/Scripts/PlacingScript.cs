@@ -9,7 +9,12 @@ public class PlacingScript : MonoBehaviour
     public Transform parentTransform;      // Reference to the parent GameObject's Transform
     private HashSet<Vector2> occupiedCells; // Set to track occupied grid cells
     private List<GameObject> blocks;       // List to track all instantiated blocks
-
+    private int currCostLothonium = 0;
+    private int currCostRawMaterials = 0;
+    private int currCostFule = 0;
+    private int currCostAdvancedParts = 0;
+    private int currCostMilkyWayDollar = 0;
+    public CurrencyHandler currencyHandler;
     private void Start()
     {
         occupiedCells = new HashSet<Vector2>();
@@ -46,10 +51,24 @@ public class PlacingScript : MonoBehaviour
             // Check if the grid position is already occupied
             if (!occupiedCells.Contains(gridPosition) && IsPositionAdjacent(gridPosition))
             {
-                GameObject newBlock = Instantiate(prefab, gridPosition, Quaternion.identity, parentTransform);
-                newBlock.transform.localScale = Vector3.one * gridSize; // Set the scale of the new block
-                occupiedCells.Add(gridPosition);
-                blocks.Add(newBlock);
+                if (currencyHandler.getCurrency(0) > currCostLothonium && currencyHandler.getCurrency(1) > currCostRawMaterials && currencyHandler.getCurrency(2) > currCostFule && currencyHandler.getCurrency(3) > currCostAdvancedParts && currencyHandler.getCurrency(4) > currCostMilkyWayDollar)
+                {
+                    currencyHandler.subtractCurrency(0, currCostLothonium);
+
+
+                    currencyHandler.subtractCurrency(1, currCostRawMaterials);
+
+                    currencyHandler.subtractCurrency(2, currCostFule);
+
+                    currencyHandler.subtractCurrency(3, currCostAdvancedParts);
+
+                    currencyHandler.subtractCurrency(4, currCostMilkyWayDollar);
+
+                    GameObject newBlock = Instantiate(prefab, gridPosition, Quaternion.identity, parentTransform);
+                    newBlock.transform.localScale = Vector3.one * gridSize; // Set the scale of the new block
+                    occupiedCells.Add(gridPosition);
+                    blocks.Add(newBlock);
+                }
             }
         }
         else if (Input.GetMouseButtonDown(1)) // Right-click to delete
@@ -170,8 +189,13 @@ public class PlacingScript : MonoBehaviour
     }
 
     // Method to set the prefab
-    public void SetPrefab(GameObject PrefabSetter)
+    public void SetPrefab(GameObject PrefabSetter, int prefabCostLothonium, int prefabCostRawMaterials, int prefabCostFule, int prefabCostAdvancedParts, int prefabCostMilkyWayDollars)
     {
         prefab = PrefabSetter;
+        currCostLothonium = prefabCostLothonium;
+        currCostRawMaterials = prefabCostRawMaterials;
+        currCostFule = prefabCostFule;
+        currCostAdvancedParts = prefabCostAdvancedParts;
+        currCostMilkyWayDollar = prefabCostMilkyWayDollars;
     }
 }
