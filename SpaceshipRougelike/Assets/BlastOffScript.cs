@@ -10,10 +10,18 @@ public class BlastOffScript : MonoBehaviour
     private float speed = 5f; 
     private bool isFlying = false;
     private float timer = 0.0f;
+    public Transform ownTransform;
+    public shipAnimationScript hehe;
     void Update()
     {
+        if (hehe.GetShipIsMoving())
+        {
 
+            ownTransform.position = hehe.GetWhereTeleport();
+
+        }
     }
+
     void FixedUpdate()
     {
         if (isFlying)
