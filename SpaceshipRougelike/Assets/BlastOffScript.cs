@@ -6,6 +6,7 @@ public class BlastOffScript : MonoBehaviour
 {
     public GameObject ShopMenu;
     public GameObject goButton;
+    public GameObject shopMenu;
     public float acceleration = 20f; 
     private float speed = 5f; 
     private bool isFlying = false;
@@ -34,6 +35,7 @@ public class BlastOffScript : MonoBehaviour
     {
         ShopMenu.SetActive(false);
         goButton.SetActive(false);
+
         isFlying = true;
 
     }
@@ -55,4 +57,5 @@ public class BlastOffScript : MonoBehaviour
     {
         return isFlying;
     }
+    
 }

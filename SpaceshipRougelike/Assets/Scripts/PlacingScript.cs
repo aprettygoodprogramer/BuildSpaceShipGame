@@ -37,6 +37,7 @@ public class PlacingScript : MonoBehaviour
             initialBlock.transform.localScale = Vector3.one * gridSize; // Set the scale of the initial block
             occupiedCells.Add(centerPosition);
             blocks.Add(initialBlock);
+            prefab = null;
         }
     }
 

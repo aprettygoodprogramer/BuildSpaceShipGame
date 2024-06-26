@@ -6,7 +6,7 @@ public class NodeScript : MonoBehaviour
 {
     private int whatTypeOfPlanet;
     public shipAnimationScript ShipAnimationScript;
-
+    public GameObject Map;
     void Start()
     {
         whatTypeOfPlanet = Random.Range(1, 2);
@@ -18,5 +18,6 @@ public class NodeScript : MonoBehaviour
             ShipAnimationScript.ChangeShipIsMoving();
             ShipAnimationScript.ChangeWhereTeleport(-8.34f, -25.9f);
         }
+        Map.SetActive(false);
     }
 }
