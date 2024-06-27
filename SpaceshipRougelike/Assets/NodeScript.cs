@@ -16,7 +16,7 @@ public class NodeScript : MonoBehaviour
     {
         if (whatTypeOfPlanet == 1) {
             ShipAnimationScript.ChangeShipIsMoving();
-            ShipAnimationScript.ChangeWhereTeleport(-8.34f, -25.9f);
+            ShipAnimationScript.ChangeWhereTeleport(-7.7f, -25.9f);
         }
         Map.SetActive(false);
     }

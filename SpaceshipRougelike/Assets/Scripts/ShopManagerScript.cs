@@ -14,20 +14,20 @@ public class ShopManagerScript : MonoBehaviour
     public GameObject SheildGeneratpr;
     public void setHallway()
     {
-    placingScript.SetPrefab(Hallway, 0, 5,0,0,7);
+    placingScript.SetPrefab(Hallway, 0, 5,0,0,7, false);
 
 
         }
     public void setThrustor()
     {
-        placingScript.SetPrefab(Thrustor, 0, 2, 3, 0, 5);
+        placingScript.SetPrefab(Thrustor, 0, 2, 3, 0, 5, true);
     }
     public void setArmory()
     {
-        placingScript.SetPrefab(Armory, 0, 3, 0, 1, 8);
+        placingScript.SetPrefab(Armory, 0, 3, 0, 1, 8, false);
     }
     public void setSheildGenerator()
     {
-        placingScript.SetPrefab(SheildGeneratpr, 2, 2, 1, 5, 10);
+        placingScript.SetPrefab(SheildGeneratpr, 2, 2, 1, 5, 10, false);
     }
 }

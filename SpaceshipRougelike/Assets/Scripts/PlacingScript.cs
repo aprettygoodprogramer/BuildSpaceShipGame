@@ -19,6 +19,7 @@ public class PlacingScript : MonoBehaviour
     private GameObject arrowInstance;      // Instance of the arrow
     private int currentRotation = 0;       // Current rotation in degrees (0, 90, 180, 270)
     public BlastOffScript blastoffscript;
+    private bool shouldRotate;
     private void Start()
     {
         occupiedCells = new HashSet<Vector2>();
@@ -36,7 +37,7 @@ public class PlacingScript : MonoBehaviour
     private void Update()
     {
         HandleMouseInput();
-        if (blastoffscript.getIsflying() == false)
+        if (blastoffscript.getIsflying() == false && shouldRotate == true)
         {
             HandleRotationInput();
             UpdateArrowPosition();
@@ -223,8 +224,10 @@ public class PlacingScript : MonoBehaviour
     }
 
     // Method to set the prefab
-    public void SetPrefab(GameObject PrefabSetter, int prefabCostLothonium, int prefabCostRawMaterials, int prefabCostFule, int prefabCostAdvancedParts, int prefabCostMilkyWayDollars)
+    public void SetPrefab(GameObject PrefabSetter, int prefabCostLothonium, int prefabCostRawMaterials, int prefabCostFule, int prefabCostAdvancedParts, int prefabCostMilkyWayDollars, bool ShouldRotate)
     {
+
+        shouldRotate = ShouldRotate;
         prefab = PrefabSetter;
         currCostLothonium = prefabCostLothonium;
         currCostRawMaterials = prefabCostRawMaterials;
