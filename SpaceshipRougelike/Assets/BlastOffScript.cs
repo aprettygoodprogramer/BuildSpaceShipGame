@@ -13,6 +13,7 @@ public class BlastOffScript : MonoBehaviour
     private float timer = 0.0f;
     public Transform ownTransform;
     public shipAnimationScript hehe;
+    public bool hasBlastedOff;
     void Update()
     {
         if (hehe.GetShipIsMoving())
@@ -58,4 +59,5 @@ public class BlastOffScript : MonoBehaviour
         return isFlying;
     }
     
+
 }

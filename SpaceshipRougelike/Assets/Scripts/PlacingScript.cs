@@ -15,16 +15,32 @@ public class PlacingScript : MonoBehaviour
     private int currCostAdvancedParts = 0;
     private int currCostMilkyWayDollar = 0;
     public CurrencyHandler currencyHandler;
+    public GameObject arrowPrefab;         // Reference to the arrow prefab
+    private GameObject arrowInstance;      // Instance of the arrow
+    private int currentRotation = 0;       // Current rotation in degrees (0, 90, 180, 270)
+    public BlastOffScript blastoffscript;
     private void Start()
     {
         occupiedCells = new HashSet<Vector2>();
         blocks = new List<GameObject>();
         PlaceInitialBuilding();
+
+        // Instantiate and initialize the arrow
+        if (arrowPrefab != null)
+        {
+            arrowInstance = Instantiate(arrowPrefab, Vector3.zero, Quaternion.identity);
+            arrowInstance.SetActive(false); // Hide the arrow initially
+        }
     }
 
     private void Update()
     {
         HandleMouseInput();
+        if (blastoffscript.getIsflying() == false)
+        {
+            HandleRotationInput();
+            UpdateArrowPosition();
+        }
     }
 
     // Place the initial building in the middle of the grid
@@ -33,7 +49,7 @@ public class PlacingScript : MonoBehaviour
         Vector2 centerPosition = SnapToGrid(Vector2.zero); // Center of the screen
         if (prefab != null)
         {
-            GameObject initialBlock = Instantiate(prefab, centerPosition, Quaternion.identity, parentTransform);
+            GameObject initialBlock = Instantiate(prefab, centerPosition, Quaternion.Euler(0, 0, currentRotation), parentTransform);
             initialBlock.transform.localScale = Vector3.one * gridSize; // Set the scale of the initial block
             occupiedCells.Add(centerPosition);
             blocks.Add(initialBlock);
@@ -55,17 +71,12 @@ public class PlacingScript : MonoBehaviour
                 if (currencyHandler.getCurrency(0) > currCostLothonium && currencyHandler.getCurrency(1) > currCostRawMaterials && currencyHandler.getCurrency(2) > currCostFule && currencyHandler.getCurrency(3) > currCostAdvancedParts && currencyHandler.getCurrency(4) > currCostMilkyWayDollar)
                 {
                     currencyHandler.subtractCurrency(0, currCostLothonium);
-
-
                     currencyHandler.subtractCurrency(1, currCostRawMaterials);
-
                     currencyHandler.subtractCurrency(2, currCostFule);
-
                     currencyHandler.subtractCurrency(3, currCostAdvancedParts);
-
                     currencyHandler.subtractCurrency(4, currCostMilkyWayDollar);
 
-                    GameObject newBlock = Instantiate(prefab, gridPosition, Quaternion.identity, parentTransform);
+                    GameObject newBlock = Instantiate(prefab, gridPosition, Quaternion.Euler(0, 0, currentRotation), parentTransform);
                     newBlock.transform.localScale = Vector3.one * gridSize; // Set the scale of the new block
                     occupiedCells.Add(gridPosition);
                     blocks.Add(newBlock);
@@ -88,6 +99,31 @@ public class PlacingScript : MonoBehaviour
                     Destroy(blockToRemove);
                 }
             }
+        }
+    }
+
+    // Handle rotation input
+    private void HandleRotationInput()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            currentRotation = (currentRotation + 90) % 360;
+            if (arrowInstance != null)
+            {
+                arrowInstance.transform.rotation = Quaternion.Euler(0, 0, currentRotation);
+            }
+        }
+    }
+
+    // Update the arrow position to follow the mouse
+    private void UpdateArrowPosition()
+    {
+        if (arrowInstance != null)
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 gridPosition = SnapToGrid(mousePosition);
+            arrowInstance.transform.position = gridPosition;
+            arrowInstance.SetActive(true);
         }
     }
 
