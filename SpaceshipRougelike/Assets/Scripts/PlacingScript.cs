@@ -102,29 +102,26 @@ public class PlacingScript : MonoBehaviour
         }
     }
 
-    // Handle rotation input
     private void HandleRotationInput()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
             currentRotation = (currentRotation + 90) % 360;
-            if (arrowInstance != null)
-            {
+
                 arrowInstance.transform.rotation = Quaternion.Euler(0, 0, currentRotation);
-            }
+
         }
     }
 
-    // Update the arrow position to follow the mouse
     private void UpdateArrowPosition()
     {
-        if (arrowInstance != null)
-        {
+
+
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 gridPosition = SnapToGrid(mousePosition);
             arrowInstance.transform.position = gridPosition;
             arrowInstance.SetActive(true);
-        }
+
     }
 
     // Snap a given position to the nearest grid point
