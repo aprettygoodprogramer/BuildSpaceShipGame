@@ -22,9 +22,9 @@ public class shipAnimationScript : MonoBehaviour
     {
         return ShipIsMoving;
     }
-    public void ChangeShipIsMoving()
+    public void ChangeShipIsMoving(bool what)
     {
-        ShipIsMoving = !ShipIsMoving;
+        ShipIsMoving = what;
     }
     public void ChangeWhereTeleport(float x, float y)
     {

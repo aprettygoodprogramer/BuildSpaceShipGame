@@ -9,7 +9,9 @@ public class CurrencyHandler : MonoBehaviour
     int FuleAmt = 1000;
     int AdvancedPartsAmt = 1000;
     int MilkyWayDollarsAmt = 1000;
+    public TextMeshProUGUI textToFade;
 
+    public float fadeDuration = 5.0f;
     public TMP_Text LothoniumTxt;
     public TMP_Text RawMaterialsTxt;
     public TMP_Text FuleTxt;
@@ -18,7 +20,9 @@ public class CurrencyHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Color color = textToFade.color;
+        color.a = 0;
+        textToFade.color = color;
     }
 
     // Update is called once per frame
@@ -81,5 +85,23 @@ public class CurrencyHandler : MonoBehaviour
            MilkyWayDollarsAmt-=howMuch;
         }
     }
+    public void noArmory()
+    {
+        StartCoroutine(FadeTextToZeroAlpha(fadeDuration));
+    }
+    private IEnumerator FadeTextToZeroAlpha(float duration)
+    {
+        Color originalColor = textToFade.color;
+        float elapsedTime = 0f;
 
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Clamp01(1.0f - (elapsedTime / duration));
+            textToFade.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            yield return null;
+        }
+
+        textToFade.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0);
+    }
 }

@@ -20,6 +20,10 @@ public class PlacingScript : MonoBehaviour
     private int currentRotation = 0;       // Current rotation in degrees (0, 90, 180, 270)
     public BlastOffScript blastoffscript;
     private bool shouldRotate;
+    private bool ArmoryIs = false;
+    public ShopManagerScript SMscript;
+    public bool WeaponIs = false;
+    
     private void Start()
     {
         occupiedCells = new HashSet<Vector2>();
@@ -71,16 +75,41 @@ public class PlacingScript : MonoBehaviour
             {
                 if (currencyHandler.getCurrency(0) > currCostLothonium && currencyHandler.getCurrency(1) > currCostRawMaterials && currencyHandler.getCurrency(2) > currCostFule && currencyHandler.getCurrency(3) > currCostAdvancedParts && currencyHandler.getCurrency(4) > currCostMilkyWayDollar)
                 {
-                    currencyHandler.subtractCurrency(0, currCostLothonium);
-                    currencyHandler.subtractCurrency(1, currCostRawMaterials);
-                    currencyHandler.subtractCurrency(2, currCostFule);
-                    currencyHandler.subtractCurrency(3, currCostAdvancedParts);
-                    currencyHandler.subtractCurrency(4, currCostMilkyWayDollar);
+                    if (ArmoryIs == true)
+                    {
+                        SMscript.changeGetArmory();
+                    }
+                    if (WeaponIs == true && SMscript.getArmory() == false)
 
-                    GameObject newBlock = Instantiate(prefab, gridPosition, Quaternion.Euler(0, 0, currentRotation), parentTransform);
-                    newBlock.transform.localScale = Vector3.one * gridSize; // Set the scale of the new block
-                    occupiedCells.Add(gridPosition);
-                    blocks.Add(newBlock);
+                    {
+                        currencyHandler.subtractCurrency(0, currCostLothonium);
+                        currencyHandler.subtractCurrency(1, currCostRawMaterials);
+                        currencyHandler.subtractCurrency(2, currCostFule);
+                        currencyHandler.subtractCurrency(3, currCostAdvancedParts);
+                        currencyHandler.subtractCurrency(4, currCostMilkyWayDollar);
+
+                        GameObject newBlock = Instantiate(prefab, gridPosition, Quaternion.Euler(0, 0, currentRotation), parentTransform);
+                        newBlock.transform.localScale = Vector3.one * gridSize; // Set the scale of the new block
+                        occupiedCells.Add(gridPosition);
+                        blocks.Add(newBlock);
+                    }
+                    else if (WeaponIs == false)
+                    {
+                        currencyHandler.subtractCurrency(0, currCostLothonium);
+                        currencyHandler.subtractCurrency(1, currCostRawMaterials);
+                        currencyHandler.subtractCurrency(2, currCostFule);
+                        currencyHandler.subtractCurrency(3, currCostAdvancedParts);
+                        currencyHandler.subtractCurrency(4, currCostMilkyWayDollar);
+
+                        GameObject newBlock = Instantiate(prefab, gridPosition, Quaternion.Euler(0, 0, currentRotation), parentTransform);
+                        newBlock.transform.localScale = Vector3.one * gridSize; // Set the scale of the new block
+                        occupiedCells.Add(gridPosition);
+                        blocks.Add(newBlock);
+                    }
+                    else  if (WeaponIs == true && SMscript.getArmory() == true)
+                    {
+                        currencyHandler.noArmory();
+                    }
                 }
             }
         }
@@ -224,7 +253,7 @@ public class PlacingScript : MonoBehaviour
     }
 
     // Method to set the prefab
-    public void SetPrefab(GameObject PrefabSetter, int prefabCostLothonium, int prefabCostRawMaterials, int prefabCostFule, int prefabCostAdvancedParts, int prefabCostMilkyWayDollars, bool ShouldRotate)
+    public void SetPrefab(GameObject PrefabSetter, int prefabCostLothonium, int prefabCostRawMaterials, int prefabCostFule, int prefabCostAdvancedParts, int prefabCostMilkyWayDollars, bool ShouldRotate, bool IsArmory, bool isWeapon)
     {
 
         shouldRotate = ShouldRotate;
@@ -234,5 +263,7 @@ public class PlacingScript : MonoBehaviour
         currCostFule = prefabCostFule;
         currCostAdvancedParts = prefabCostAdvancedParts;
         currCostMilkyWayDollar = prefabCostMilkyWayDollars;
+        ArmoryIs = IsArmory;
+        WeaponIs = isWeapon;
     }
 }

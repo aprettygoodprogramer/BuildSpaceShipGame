@@ -20,6 +20,7 @@ public class BlastOffScript : MonoBehaviour
         {
 
             ownTransform.position = hehe.GetWhereTeleport();
+            hehe.ChangeShipIsMoving(false);
 
         }
     }
