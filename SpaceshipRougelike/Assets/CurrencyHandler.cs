@@ -11,7 +11,7 @@ public class CurrencyHandler : MonoBehaviour
     int MilkyWayDollarsAmt = 1000;
     public TextMeshProUGUI textToFade;
 
-    public float fadeDuration = 5.0f;
+    public float fadeDuration = 3.5f;
     public TMP_Text LothoniumTxt;
     public TMP_Text RawMaterialsTxt;
     public TMP_Text FuleTxt;

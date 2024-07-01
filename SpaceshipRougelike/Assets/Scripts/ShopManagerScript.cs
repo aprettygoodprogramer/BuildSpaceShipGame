@@ -19,7 +19,7 @@ public class ShopManagerScript : MonoBehaviour
     placingScript.SetPrefab(Hallway, 0, 5,0,0,7, false, false, false);
 
 
-        }
+    }
     public void setThrustor()
     {
         placingScript.SetPrefab(Thrustor, 0, 2, 3, 0, 5, true, false, false);
@@ -44,4 +44,5 @@ public class ShopManagerScript : MonoBehaviour
     {
         needsArmory = false;
     }
+
 }

@@ -11,7 +11,7 @@ public class PlacingScript : MonoBehaviour
     private List<GameObject> blocks;       // List to track all instantiated blocks
     private int currCostLothonium = 0;
     private int currCostRawMaterials = 0;
-    private int currCostFule = 0;
+    private int currCostFuel = 0;
     private int currCostAdvancedParts = 0;
     private int currCostMilkyWayDollar = 0;
     public CurrencyHandler currencyHandler;
@@ -23,7 +23,7 @@ public class PlacingScript : MonoBehaviour
     private bool ArmoryIs = false;
     public ShopManagerScript SMscript;
     public bool WeaponIs = false;
-    
+
     private void Start()
     {
         occupiedCells = new HashSet<Vector2>();
@@ -41,7 +41,7 @@ public class PlacingScript : MonoBehaviour
     private void Update()
     {
         HandleMouseInput();
-        if (blastoffscript.getIsflying() == false && shouldRotate == true)
+        if (!blastoffscript.getIsflying() && shouldRotate)
         {
             HandleRotationInput();
             UpdateArrowPosition();
@@ -51,7 +51,7 @@ public class PlacingScript : MonoBehaviour
     // Place the initial building in the middle of the grid
     private void PlaceInitialBuilding()
     {
-        Vector2 centerPosition = SnapToGrid(Vector2.zero); // Center of the screen
+        Vector2 centerPosition = SnapToGrid(Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2))); // Center of the screen
         if (prefab != null)
         {
             GameObject initialBlock = Instantiate(prefab, centerPosition, Quaternion.Euler(0, 0, currentRotation), parentTransform);
@@ -73,18 +73,17 @@ public class PlacingScript : MonoBehaviour
             // Check if the grid position is already occupied
             if (!occupiedCells.Contains(gridPosition) && IsPositionAdjacent(gridPosition))
             {
-                if (currencyHandler.getCurrency(0) > currCostLothonium && currencyHandler.getCurrency(1) > currCostRawMaterials && currencyHandler.getCurrency(2) > currCostFule && currencyHandler.getCurrency(3) > currCostAdvancedParts && currencyHandler.getCurrency(4) > currCostMilkyWayDollar)
+                if (currencyHandler.getCurrency(0) > currCostLothonium && currencyHandler.getCurrency(1) > currCostRawMaterials && currencyHandler.getCurrency(2) > currCostFuel && currencyHandler.getCurrency(3) > currCostAdvancedParts && currencyHandler.getCurrency(4) > currCostMilkyWayDollar)
                 {
-                    if (ArmoryIs == true)
+                    if (ArmoryIs)
                     {
                         SMscript.changeGetArmory();
                     }
-                    if (WeaponIs == true && SMscript.getArmory() == false)
-
+                    if (WeaponIs && !SMscript.getArmory())
                     {
                         currencyHandler.subtractCurrency(0, currCostLothonium);
                         currencyHandler.subtractCurrency(1, currCostRawMaterials);
-                        currencyHandler.subtractCurrency(2, currCostFule);
+                        currencyHandler.subtractCurrency(2, currCostFuel);
                         currencyHandler.subtractCurrency(3, currCostAdvancedParts);
                         currencyHandler.subtractCurrency(4, currCostMilkyWayDollar);
 
@@ -93,11 +92,11 @@ public class PlacingScript : MonoBehaviour
                         occupiedCells.Add(gridPosition);
                         blocks.Add(newBlock);
                     }
-                    else if (WeaponIs == false)
+                    else if (!WeaponIs)
                     {
                         currencyHandler.subtractCurrency(0, currCostLothonium);
                         currencyHandler.subtractCurrency(1, currCostRawMaterials);
-                        currencyHandler.subtractCurrency(2, currCostFule);
+                        currencyHandler.subtractCurrency(2, currCostFuel);
                         currencyHandler.subtractCurrency(3, currCostAdvancedParts);
                         currencyHandler.subtractCurrency(4, currCostMilkyWayDollar);
 
@@ -106,7 +105,7 @@ public class PlacingScript : MonoBehaviour
                         occupiedCells.Add(gridPosition);
                         blocks.Add(newBlock);
                     }
-                    else  if (WeaponIs == true && SMscript.getArmory() == true)
+                    else if (WeaponIs && SMscript.getArmory())
                     {
                         currencyHandler.noArmory();
                     }
@@ -137,21 +136,16 @@ public class PlacingScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             currentRotation = (currentRotation + 90) % 360;
-
-                arrowInstance.transform.rotation = Quaternion.Euler(0, 0, currentRotation);
-
+            arrowInstance.transform.rotation = Quaternion.Euler(0, 0, currentRotation);
         }
     }
 
     private void UpdateArrowPosition()
     {
-
-
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 gridPosition = SnapToGrid(mousePosition);
-            arrowInstance.transform.position = gridPosition;
-            arrowInstance.SetActive(true);
-
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 gridPosition = SnapToGrid(mousePosition);
+        arrowInstance.transform.position = gridPosition;
+        arrowInstance.SetActive(true);
     }
 
     // Snap a given position to the nearest grid point
@@ -253,14 +247,13 @@ public class PlacingScript : MonoBehaviour
     }
 
     // Method to set the prefab
-    public void SetPrefab(GameObject PrefabSetter, int prefabCostLothonium, int prefabCostRawMaterials, int prefabCostFule, int prefabCostAdvancedParts, int prefabCostMilkyWayDollars, bool ShouldRotate, bool IsArmory, bool isWeapon)
+    public void SetPrefab(GameObject PrefabSetter, int prefabCostLothonium, int prefabCostRawMaterials, int prefabCostFuel, int prefabCostAdvancedParts, int prefabCostMilkyWayDollars, bool ShouldRotate, bool IsArmory, bool isWeapon)
     {
-
         shouldRotate = ShouldRotate;
         prefab = PrefabSetter;
         currCostLothonium = prefabCostLothonium;
         currCostRawMaterials = prefabCostRawMaterials;
-        currCostFule = prefabCostFule;
+        currCostFuel = prefabCostFuel;
         currCostAdvancedParts = prefabCostAdvancedParts;
         currCostMilkyWayDollar = prefabCostMilkyWayDollars;
         ArmoryIs = IsArmory;
