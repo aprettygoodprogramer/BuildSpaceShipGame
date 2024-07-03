@@ -19,4 +19,8 @@ public class BuildingSystemAmtHandler : MonoBehaviour
     {
         
     }
+    void setKind(int whatKind)
+    {
+
+    }
 }
