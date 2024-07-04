@@ -23,7 +23,7 @@ public class PlacingScript : MonoBehaviour
     private bool ArmoryIs = false;
     public ShopManagerScript SMscript;
     public bool WeaponIs = false;
-
+    public BuildingSystemAmtHandler BsAh;
     private void Start()
     {
         occupiedCells = new HashSet<Vector2>();
@@ -91,6 +91,7 @@ public class PlacingScript : MonoBehaviour
                         newBlock.transform.localScale = Vector3.one * gridSize; // Set the scale of the new block
                         occupiedCells.Add(gridPosition);
                         blocks.Add(newBlock);
+                        BsAh.addAmt();
                     }
                     else if (!WeaponIs)
                     {
@@ -104,6 +105,7 @@ public class PlacingScript : MonoBehaviour
                         newBlock.transform.localScale = Vector3.one * gridSize; // Set the scale of the new block
                         occupiedCells.Add(gridPosition);
                         blocks.Add(newBlock);
+                        BsAh.addAmt();
                     }
                     else if (WeaponIs && SMscript.getArmory())
                     {

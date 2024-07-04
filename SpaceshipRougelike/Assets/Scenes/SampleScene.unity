@@ -982,6 +982,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &362375617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 362375619}
+  - component: {fileID: 362375618}
+  m_Layer: 0
+  m_Name: BuildingSystemAmtHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &362375618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362375617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ffc9b4c28b6c74e994b3b6ee4c480f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &362375619
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362375617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.0993896, y: -0.36602706, z: 0.66327107}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &381302383
 GameObject:
   m_ObjectHideFlags: 0
@@ -7798,6 +7842,7 @@ MonoBehaviour:
   SheildGeneratpr: {fileID: 9102368071012339792, guid: 565474528c2eb2e44bffa5dc5049fce5, type: 3}
   basicGun: {fileID: 9102368071012339792, guid: b735d564f59e5204a8d5ef5839041518, type: 3}
   needsArmory: 1
+  BsAh: {fileID: 0}
 --- !u!4 &1700602353
 Transform:
   m_ObjectHideFlags: 0
@@ -10330,6 +10375,7 @@ MonoBehaviour:
   blastoffscript: {fileID: 711611140}
   SMscript: {fileID: 1700602352}
   WeaponIs: 0
+  BsAh: {fileID: 362375618}
 --- !u!1 &2134729291
 GameObject:
   m_ObjectHideFlags: 0
