@@ -2005,7 +2005,7 @@ MonoBehaviour:
   volumeTrigger: {fileID: 519420032}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 53
+    m_Bits: 2147483647
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
   antialiasingMode: 0
@@ -2584,6 +2584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShipAnimationScript: {fileID: 697244990}
   Map: {fileID: 1552107428}
+  testShip: {fileID: 1324446012335068346, guid: 7e7b161f72ea6c542b7b17f1f712b10f, type: 3}
 --- !u!114 &666423185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3102,6 +3103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShipAnimationScript: {fileID: 697244990}
   Map: {fileID: 1552107428}
+  testShip: {fileID: 1324446012335068346, guid: 7e7b161f72ea6c542b7b17f1f712b10f, type: 3}
 --- !u!114 &722133331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3727,6 +3729,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &810801501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 810801502}
+  m_Layer: 0
+  m_Name: EnemyShipThingy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &810801502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810801501}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &834373547
 GameObject:
@@ -4963,6 +4996,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShipAnimationScript: {fileID: 697244990}
   Map: {fileID: 1552107428}
+  testShip: {fileID: 1324446012335068346, guid: 7e7b161f72ea6c542b7b17f1f712b10f, type: 3}
 --- !u!114 &1016595674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5467,6 +5501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShipAnimationScript: {fileID: 697244990}
   Map: {fileID: 1552107428}
+  testShip: {fileID: 1324446012335068346, guid: 7e7b161f72ea6c542b7b17f1f712b10f, type: 3}
 --- !u!114 &1175955836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6878,6 +6913,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShipAnimationScript: {fileID: 697244990}
   Map: {fileID: 1552107428}
+  testShip: {fileID: 1324446012335068346, guid: 7e7b161f72ea6c542b7b17f1f712b10f, type: 3}
 --- !u!114 &1545599256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7560,6 +7596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShipAnimationScript: {fileID: 697244990}
   Map: {fileID: 1552107428}
+  testShip: {fileID: 1324446012335068346, guid: 7e7b161f72ea6c542b7b17f1f712b10f, type: 3}
 --- !u!114 &1647792752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8473,6 +8510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShipAnimationScript: {fileID: 697244990}
   Map: {fileID: 1552107428}
+  testShip: {fileID: 1324446012335068346, guid: 7e7b161f72ea6c542b7b17f1f712b10f, type: 3}
 --- !u!114 &1754856393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9300,6 +9338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShipAnimationScript: {fileID: 697244990}
   Map: {fileID: 1552107428}
+  testShip: {fileID: 1324446012335068346, guid: 7e7b161f72ea6c542b7b17f1f712b10f, type: 3}
 --- !u!114 &1945528937
 MonoBehaviour:
   m_ObjectHideFlags: 0
