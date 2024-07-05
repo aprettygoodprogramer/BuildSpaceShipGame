@@ -19,7 +19,7 @@ public class NodeScript : MonoBehaviour
         if (whatTypeOfPlanet == 1) {
             ShipAnimationScript.ChangeShipIsMoving(true);
             ShipAnimationScript.ChangeWhereTeleport(-10.17479f, -26.22f);
-            ESS.SpwanShip(transform.position, 10);
+            ESS.SpwanShip(new Vector3(-10.17479f+5, -26.22f, 0), 2);
 
         }
 
@@ -27,7 +27,8 @@ public class NodeScript : MonoBehaviour
         {
             ShipAnimationScript.ChangeShipIsMoving(true);
             ShipAnimationScript.ChangeWhereTeleport(-24.87f, -26.37f);
-            ESS.SpwanShip(transform.position, 10);
+            ESS.SpwanShip(new Vector3(-24.87f + 5, -26.37f, 0), 2);
+
 
 
         }
@@ -35,7 +36,7 @@ public class NodeScript : MonoBehaviour
         {
             ShipAnimationScript.ChangeShipIsMoving(true);
             ShipAnimationScript.ChangeWhereTeleport(-9.653739f, -45.05f);
-            ESS.SpwanShip(transform.position, 10);
+            ESS.SpwanShip(new Vector3(-9.653739f + 5, -45.05f, 0), 2);
 
 
         }
@@ -43,7 +44,7 @@ public class NodeScript : MonoBehaviour
         {
             ShipAnimationScript.ChangeShipIsMoving(true);
             ShipAnimationScript.ChangeWhereTeleport(-25.08f, -44.81f);
-            ESS.SpwanShip(transform.position, 10);
+            ESS.SpwanShip(new Vector3(-25.08f + 5, -44.81f, 0), 2);
 
 
         }

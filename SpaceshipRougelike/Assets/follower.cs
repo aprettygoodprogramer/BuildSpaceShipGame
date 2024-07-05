@@ -9,6 +9,7 @@ public class follower : MonoBehaviour
     private float smoothTime = 0f;
     private Vector3 velocity = Vector3.zero;
     public BlastOffScript blastoffscript;
+    private bool isInBattle = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,18 @@ public class follower : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 targetPosition = target.position + offset;
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        if (isInBattle == false)
+        {
+            Vector3 targetPosition = target.position + offset;
+            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        }
+    }
+    public void ChangeIsInBattle()
+    {
+        isInBattle = !isInBattle;        
+    }
+    public bool GetIsInBattle()
+    {
+        return isInBattle;
     }
 }

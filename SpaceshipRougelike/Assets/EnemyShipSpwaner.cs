@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyShipSpwaner : MonoBehaviour
 {
     public GameObject testEnemyShip;
+    public follower Follower123;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +21,6 @@ public class EnemyShipSpwaner : MonoBehaviour
     {
 
         Instantiate(testEnemyShip, whereSpwan, Quaternion.identity);
+        Follower123.ChangeIsInBattle();
     }
 }
