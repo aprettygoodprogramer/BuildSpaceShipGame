@@ -24,6 +24,7 @@ public class PlacingScript : MonoBehaviour
     public ShopManagerScript SMscript;
     public bool WeaponIs = false;
     public BuildingSystemAmtHandler BsAh;
+    public HullStrengthScript HSS;
     private void Start()
     {
         occupiedCells = new HashSet<Vector2>();
@@ -92,6 +93,7 @@ public class PlacingScript : MonoBehaviour
                         occupiedCells.Add(gridPosition);
                         blocks.Add(newBlock);
                         BsAh.addAmt();
+                        HSS.SetHowMuchHullToHullStrenght();
                     }
                     else if (!WeaponIs)
                     {
@@ -106,6 +108,7 @@ public class PlacingScript : MonoBehaviour
                         occupiedCells.Add(gridPosition);
                         blocks.Add(newBlock);
                         BsAh.addAmt();
+                        HSS.SetHowMuchHullToHullStrenght();
                     }
                     else if (WeaponIs && SMscript.getArmory())
                     {

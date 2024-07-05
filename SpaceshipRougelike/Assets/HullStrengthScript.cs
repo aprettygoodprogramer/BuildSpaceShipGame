@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 public class HullStrengthScript : MonoBehaviour
 {
-    public int HullStrength = 0;
+    public int HullStrength = 3;
     public int HowMuchHullStrengthToAdd = 0;
     public TMP_Text HullText;
     // Start is called before the first frame update
@@ -29,7 +29,7 @@ public class HullStrengthScript : MonoBehaviour
     }
     public void SetHowMuchHullToHullStrenght()
     {
-        HullStrength = HowMuchHullStrengthToAdd;
+        HullStrength += HowMuchHullStrengthToAdd;
     }
 
 }
