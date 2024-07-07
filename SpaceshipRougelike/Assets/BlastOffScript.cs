@@ -21,18 +21,20 @@ public class BlastOffScript : MonoBehaviour
 
             ownTransform.position = hehe.GetWhereTeleport();
             hehe.ChangeShipIsMoving(false);
+            
 
         }
     }
 
     void FixedUpdate()
     {
+
         if (isFlying)
         {
             startBlastoff();
         }
     }
-
+   
     public void blastOff()
     {
         ShopMenu.SetActive(false);

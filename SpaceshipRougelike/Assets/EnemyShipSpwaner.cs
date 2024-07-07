@@ -6,6 +6,7 @@ public class EnemyShipSpwaner : MonoBehaviour
 {
     public GameObject testEnemyShip;
     public follower Follower123;
+    public EnemySpaceshipScript ESS123;
     // Start is called before the first frame update
     void Start()
     {
