@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpaceshipScript : MonoBehaviour
 {
 
-    private int currSpaceShip;
+
     private int EnemyHp;
     public follower Follower;
     // Start is called before the first frame update
@@ -21,5 +21,10 @@ public class EnemySpaceshipScript : MonoBehaviour
         {
 
         }
+    }
+
+    public int GetEnemyHp()
+    {
+        return EnemyHp;
     }
 }
