@@ -20,7 +20,15 @@ public class BuildingSystemAmtHandler : MonoBehaviour
     {
         
     }
+    public int getAmount(int whatKind)
+    {
+        if (whatKind == 0)
+        {
+            return amtBasicGun;
+        }
 
+        return 0;
+    }
     public void setCurrAdd(int whatType)
     {
         currAdd = whatType;
