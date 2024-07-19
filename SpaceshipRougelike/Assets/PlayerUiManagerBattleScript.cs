@@ -8,7 +8,7 @@ public class PlayerUiManagerBattleScript : MonoBehaviour
     public BuildingSystemAmtHandler BSAH;
     public GameObject BasicGunButtonPrefab;
     public Transform buttonParent;
-
+    public GameObject PannelGameObject;
     private bool buttonsCreated = false;
 
     // Start is called before the first frame update
@@ -22,6 +22,7 @@ public class PlayerUiManagerBattleScript : MonoBehaviour
     {
         if (Follower.GetIsInBattle())
         {
+            PannelGameObject.SetActive(true);
             if (buttonsCreated == false)
             {
                 CreateWeaponButtons();

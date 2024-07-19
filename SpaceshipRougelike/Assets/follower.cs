@@ -35,7 +35,7 @@ public class follower : MonoBehaviour
     private IEnumerator ChangeIsInBattleCoroutine()
     {
         isBattleChanging = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         isInBattle = true;
         isBattleChanging = false;
     }
