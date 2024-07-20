@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public class EnergyManager : MonoBehaviour
 {
     public Image energyBarImage; // Reference to the UI Image that represents the energy bar.
-    public float maxEnergy = 100f; // Maximum energy value.
-    public float regenRate = 15f; // Energy regeneration rate per second.
+    public float maxEnergy = 50f; // Maximum energy value.
+    public float regenRate = 20f; // Energy regeneration rate per second.
     public float energyConsumption = 10f; // Energy consumed per action.
     private float currentEnergy;
     public follower Follower;

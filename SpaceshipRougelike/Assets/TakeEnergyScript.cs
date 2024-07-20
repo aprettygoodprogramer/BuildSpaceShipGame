@@ -6,7 +6,7 @@ using UnityEngine;
 public class TakeEnergyScript : MonoBehaviour
 {
     private EnergyManager EM;
-    public float EnergyConsumed;
+    public float EnergyConsumed  = 30f;
     private bool hasGot = false;
     // Start is called before the first frame update
 

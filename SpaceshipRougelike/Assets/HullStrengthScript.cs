@@ -5,8 +5,11 @@ using TMPro;
 public class HullStrengthScript : MonoBehaviour
 {
     public int HullStrength = 3;
+    public int HullStrengthMax = 0;
     public int HowMuchHullStrengthToAdd = 0;
     public TMP_Text HullText;
+    public BlastOffScript BOS;
+    private bool HasSetMax = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +20,12 @@ public class HullStrengthScript : MonoBehaviour
     void Update()
     {
         HullText.text = "Current Hull Strength: " + HullStrength.ToString();
+        if (BOS.getIsflying() == true && HasSetMax == false)
+        {
+            HullStrengthMax = HullStrength;
+            HasSetMax = true;
+
+        }
         
     }
     public void ChangeMuchHull(int amount)
