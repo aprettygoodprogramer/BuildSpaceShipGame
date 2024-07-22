@@ -36,12 +36,16 @@ public class EnemyAiScript : MonoBehaviour
         while (Follower.GetIsInBattle()) // Keep the coroutine running as long as the condition is met
         {
             float waitTime = Random.Range(3f, 14f);
-            Debug.Log(waitTime);
+
             yield return new WaitForSeconds(waitTime);
 
             timerEnded = true;
         }
 
         isCoroutineRunning = false; // Mark that the coroutine is no longer running
+    }
+    public void getWeaponsForAi(Weapon[] weaponsHave)
+    {
+        
     }
 }
