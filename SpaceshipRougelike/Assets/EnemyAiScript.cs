@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyAiScript : MonoBehaviour
@@ -7,11 +8,12 @@ public class EnemyAiScript : MonoBehaviour
     private bool timerEnded = false;
     public follower Follower;
     private bool isCoroutineRunning = false; // To ensure coroutine is started only once
-
+    private Weapon[] enemyWeapons;
+    private int AmountWeapon;
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -46,6 +48,7 @@ public class EnemyAiScript : MonoBehaviour
     }
     public void getWeaponsForAi(Weapon[] weaponsHave)
     {
-        
+        enemyWeapons = weaponsHave;
+        AmountWeapon = enemyWeapons.Count();
     }
 }
