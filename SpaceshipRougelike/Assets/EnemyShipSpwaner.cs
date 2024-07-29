@@ -8,9 +8,9 @@ public class EnemyShipSpwaner : MonoBehaviour
     public follower Follower123;
     public EnemySpaceshipScript ESS123;
     public EnemyAiScript EAS;
-    Weapon myWeapon = new Weapon(0, 3, false);
-    Weapon myWeapon1 = new Weapon(1, 10, false);
-    Weapon myWeapon2 = new Weapon(2, 2, false);
+    Weapon myWeapon = new Weapon(3, false);
+    Weapon myWeapon1 = new Weapon(10, false);
+    Weapon myWeapon2 = new Weapon( 2, false);
     // Start is called before the first frame update
     void Start()
     {
@@ -26,12 +26,16 @@ public class EnemyShipSpwaner : MonoBehaviour
     {
         Instantiate(testEnemyShip, whereSpwan, Quaternion.identity);
         Follower123.ChangeIsInBattle();
-        List<Weapon> weapons = new List<Weapon>();
-        weapons.Add(new Weapon(myWeapon));
-        weapons.Add(new Weapon(myWeapon1));
-        weapons.Add(new Weapon(myWeapon2));
+        List<Weapon> weapons = new List<Weapon>
+        {
+            new Weapon(3, false),
+            new Weapon(10, false),
+            new Weapon(2, false)
+        };
         Weapon[] weaponsArray = weapons.ToArray();
         EAS.getWeaponsForAi(weaponsArray);
+
+
 
 
 
@@ -39,16 +43,16 @@ public class EnemyShipSpwaner : MonoBehaviour
 }
 public class Weapon
 {
-    private int weaponId;
     private int weaponDamage;
     private bool specialWeapon;
     private Weapon myWeapon;
 
-    public Weapon(int id, int damage, bool isSpecial)
+    public Weapon(int damage, bool isSpecial)
     {
-        weaponId = id;
+
         weaponDamage = damage;
         specialWeapon = isSpecial;
+
     }
 
     public Weapon(Weapon myWeapon)
@@ -56,10 +60,7 @@ public class Weapon
         this.myWeapon = myWeapon;
     }
 
-    public int GetWeaponId()
-    {
-        return weaponId;
-    }
+
 
     public int GetWeaponDamage()
     {

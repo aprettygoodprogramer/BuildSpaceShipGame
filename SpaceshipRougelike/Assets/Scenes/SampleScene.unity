@@ -918,6 +918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Follower: {fileID: 519420033}
+  HSS: {fileID: 1687137752}
 --- !u!4 &236878568
 Transform:
   m_ObjectHideFlags: 0
@@ -3418,7 +3419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShopMenu: {fileID: 1690962520}
   goButton: {fileID: 510782662}
-  shopMenu: {fileID: 0}
+  shopMenu: {fileID: 1690962520}
   acceleration: 1
   ownTransform: {fileID: 711611139}
   hehe: {fileID: 697244990}
@@ -4391,7 +4392,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testEnemyShip: {fileID: 1324446012335068346, guid: 7e7b161f72ea6c542b7b17f1f712b10f, type: 3}
   Follower123: {fileID: 519420033}
-  ESS123: {fileID: 0}
+  ESS123: {fileID: 1993360956}
+  EAS: {fileID: 236878567}
 --- !u!1 &834373547
 GameObject:
   m_ObjectHideFlags: 0

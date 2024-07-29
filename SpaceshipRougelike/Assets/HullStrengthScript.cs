@@ -40,5 +40,8 @@ public class HullStrengthScript : MonoBehaviour
     {
         HullStrength += HowMuchHullStrengthToAdd;
     }
-
+    public void MinusHull(int heeheh)
+    {
+        HullStrength -= heeheh;
+    }
 }
