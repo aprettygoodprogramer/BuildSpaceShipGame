@@ -307,6 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnergyConsumed: 30
+  Damage: 5
 --- !u!1 &1747610612485490973
 GameObject:
   m_ObjectHideFlags: 0

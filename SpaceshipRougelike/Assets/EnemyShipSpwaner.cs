@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyShipSpwaner : MonoBehaviour
@@ -9,7 +10,7 @@ public class EnemyShipSpwaner : MonoBehaviour
     public EnemySpaceshipScript ESS123;
     public EnemyAiScript EAS;
     Weapon myWeapon = new Weapon(3, false);
-    Weapon myWeapon1 = new Weapon(10, false);
+    Weapon myWeapon1 = new Weapon(6, false);
     Weapon myWeapon2 = new Weapon( 2, false);
     // Start is called before the first frame update
     void Start()
@@ -26,19 +27,16 @@ public class EnemyShipSpwaner : MonoBehaviour
     {
         Instantiate(testEnemyShip, whereSpwan, Quaternion.identity);
         Follower123.ChangeIsInBattle();
-        List<Weapon> weapons = new List<Weapon>
-        {
-            new Weapon(3, false),
-            new Weapon(10, false),
-            new Weapon(2, false)
-        };
-        Weapon[] weaponsArray = weapons.ToArray();
-        EAS.getWeaponsForAi(weaponsArray);
 
 
+        List<Weapon> weapons = new List<Weapon>();
 
 
-
+        weapons.Add(myWeapon);
+        weapons.Add(myWeapon1);
+        weapons.Add(myWeapon2);
+        EAS.getHealthForAi(20);
+        EAS.getWeaponsForAi(weapons.ToArray());
     }
 }
 public class Weapon
