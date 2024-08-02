@@ -21,7 +21,7 @@ public class EnemyScriptUiShower : MonoBehaviour
         {
             self.SetActive(true);
             int enemyHp = enemySpaceshipScript.GetEnemyHp();
-            EnemyUIHealthText.text = "Enemy Hull Strength: " + enemyHp.ToString();
+            
 
         }
     }

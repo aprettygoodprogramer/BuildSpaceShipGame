@@ -28,7 +28,7 @@ public class EnemyAiScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(AmountWeapon);
+
         if (Follower.GetIsInBattle() == true && !isCoroutineRunning)
         {
             StartCoroutine(TimerCoroutine());
@@ -40,8 +40,11 @@ public class EnemyAiScript : MonoBehaviour
             ATTACK();
             timerEnded = false;
         }
-        enemyHealthText.text = "Enemy Hull Strength: " + EnemyHealth.ToString();
-        Debug.Log(EnemyHealth + " enemy health");
+        if (Follower.GetIsInBattle())
+        {
+            enemyHealthText.text = "Enemy Hull Strength: asdfsadf" + EnemyHealth.ToString();
+        }
+
     }
 
     void ATTACK()
