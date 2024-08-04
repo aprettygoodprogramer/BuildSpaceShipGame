@@ -42,7 +42,7 @@ public class EnemyAiScript : MonoBehaviour
         }
         if (Follower.GetIsInBattle())
         {
-            enemyHealthText.text = "Enemy Hull Strength: asdfsadf" + EnemyHealth.ToString();
+            enemyHealthText.text = "Enemy Hull Strength: " + EnemyHealth.ToString();
         }
 
     }
