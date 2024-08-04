@@ -4,7 +4,6 @@ using System.Linq;
 using System.Transactions;
 using UnityEngine;
 using TMPro;
-using Unity.VisualScripting;
 
 public class EnemyAiScript : MonoBehaviour
 {
@@ -19,6 +18,9 @@ public class EnemyAiScript : MonoBehaviour
     public GameObject explosionPrefab;
     public int EnemyHealth;
     public TMP_Text enemyHealthText;
+
+    //0 = Lothonium    1 = Raw Mats    2 = Fule    3 = Adv Parts    4 = Milky Way Dollars
+    public int[] CurrencyGiveList;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,12 @@ public class EnemyAiScript : MonoBehaviour
         if (Follower.GetIsInBattle())
         {
             enemyHealthText.text = "Enemy Hull Strength: " + EnemyHealth.ToString();
+            if (EnemyHealth <= 0)
+            {
+                Follower.ChangeIsInBattle();
+                GameObject Enemy = GameObject.FindWithTag("Enemy");
+                Destroy(Enemy);
+            }
         }
 
     }
@@ -94,5 +102,9 @@ public class EnemyAiScript : MonoBehaviour
     public void takeDamage(int healthTaken)
     {
         EnemyHealth -= healthTaken;
+    }
+    public void howMuchGiveWhenDefeat(int[] giveList)
+    {
+        CurrencyGiveList = giveList;
     }
 }

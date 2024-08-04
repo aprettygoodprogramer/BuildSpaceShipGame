@@ -36,6 +36,9 @@ public class EnemyShipSpwaner : MonoBehaviour
         weapons.Add(myWeapon1);
         weapons.Add(myWeapon2);
         EAS.getHealthForAi(20);
+        //0 = Lothonium    1 = Raw Mats    2 = Fule    3 = Adv Parts    4 = Milky Way Dollars
+        int[] weaponGive = {1, 2, 0, 0, 6};
+        EAS.howMuchGiveWhenDefeat(weaponGive);
         EAS.getWeaponsForAi(weapons.ToArray());
     }
 }

@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 public class HullStrengthScript : MonoBehaviour
 {
     public int HullStrength = 3;
-    public int HullStrengthMax = 0;
+    public int HullStrengthMax = 3;
     public int HowMuchHullStrengthToAdd = 0;
     public TMP_Text HullText;
     public BlastOffScript BOS;
@@ -25,6 +27,10 @@ public class HullStrengthScript : MonoBehaviour
             HullStrengthMax = HullStrength;
             HasSetMax = true;
 
+        }
+        if (HullStrength < 0)
+        {
+            SceneManager.LoadScene(1);
         }
         
     }
