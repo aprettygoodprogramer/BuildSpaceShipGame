@@ -31,10 +31,11 @@ public class TakeEnergyScript : MonoBehaviour
     public void TakeEnergy()
     {
         EM.ConsumeEnergy(EnergyConsumed);
+
     }
     public void DoDamage()
     {
-        EAS.takeDamage(Damage);
+        EM.setDamageInt(Damage);
     }
     
     

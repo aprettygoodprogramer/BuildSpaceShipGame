@@ -29,6 +29,10 @@ public class PlayerUiManagerBattleScript : MonoBehaviour
             }
             buttonsCreated = true;
         }
+        if (Follower.GetIsInBattle() == false)
+        {
+            PannelGameObject.SetActive(false);
+        }
 
     }
 

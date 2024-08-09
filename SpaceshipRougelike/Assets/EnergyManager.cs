@@ -10,8 +10,9 @@ public class EnergyManager : MonoBehaviour
     public float energyConsumption = 10f; // Energy consumed per action.
     private float currentEnergy;
     public follower Follower;
+    public EnemyAiScript EAS;
     public GameObject EnergyGameObject;
-
+    public int damageSet;
     void Start()
     {
         currentEnergy = maxEnergy;
@@ -22,9 +23,14 @@ public class EnergyManager : MonoBehaviour
         if (Follower.GetIsInBattle() == true)
         {
             EnergyGameObject.SetActive(true);
+            RegenerateEnergy();
+            UpdateEnergyBarUI();
         }
-        RegenerateEnergy();
-        UpdateEnergyBarUI();
+        if (Follower.GetIsInBattle() == false)
+        {
+            EnergyGameObject.SetActive(false);
+        }
+
     }
 
     void RegenerateEnergy()
@@ -44,14 +50,19 @@ public class EnergyManager : MonoBehaviour
         if (currentEnergy >= energyTake)
         {
             currentEnergy -= energyTake;
+            EAS.takeDamage(damageSet);
         }
         else
         {
-            Debug.Log("Not enough energy!");
+            
         }
     }
     public void UpdateEnergyBarUI()
     {
         energyBarImage.fillAmount = currentEnergy / maxEnergy;
+    }
+    public void setDamageInt( int DAMAGE)
+    {
+        damageSet = DAMAGE;
     }
 }

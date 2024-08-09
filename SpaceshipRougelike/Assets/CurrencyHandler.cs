@@ -17,6 +17,22 @@ public class CurrencyHandler : MonoBehaviour
     public TMP_Text FuleTxt;
     public TMP_Text AdvancedPartsTxt;
     public TMP_Text MilkyWayDollarsTxt;
+   
+
+
+
+    public bool isInMenu;
+    public TMP_Text LothoniumTxtGain;
+    public TMP_Text RawMaterialsTxtGain;
+    public TMP_Text FuleTxtGain;
+    public TMP_Text AdvancedPartsTxtGain;
+    public TMP_Text MilkyWayDollarsTxtGain;
+    public GameObject deeznuts123;
+    int LothoniumAmtGain = 0;
+    int RawMaterialsAmtGain = 0;
+    int FuleAmtGain = 0;
+    int AdvancedPartsAmtGain = 0;
+    int MilkyWayDollarsAmtGain = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +49,18 @@ public class CurrencyHandler : MonoBehaviour
         FuleTxt.text = "Fule: " + FuleAmt.ToString();
         AdvancedPartsTxt.text = "Advanced Parts: " + AdvancedPartsAmt.ToString();
         MilkyWayDollarsTxt.text = "Milky Way Dollars: " + MilkyWayDollarsAmt.ToString();
+        if (isInMenu)
+        {
+            LothoniumTxtGain.text = "+ " + LothoniumAmtGain.ToString() + " Lothonium";
+            RawMaterialsTxtGain.text = "+ " + RawMaterialsAmtGain.ToString() + " Raw Materials";
+            FuleTxtGain.text = "+ " + FuleAmtGain.ToString() + " Fule";
+            AdvancedPartsTxtGain.text = "+ " + AdvancedPartsAmtGain.ToString()  + " AdvancedParts";
+            MilkyWayDollarsTxtGain.text = "+ " + MilkyWayDollarsAmtGain.ToString() + " Milky Way Dollars";
+        }
+        if (isInMenu == false)
+        {
+            deeznuts123.SetActive(false);
+        }
     }
 
     public int getCurrency(int whatKind)
@@ -85,6 +113,29 @@ public class CurrencyHandler : MonoBehaviour
            MilkyWayDollarsAmt-=howMuch;
         }
     }
+    public void AddCurrency(int whatKind, int howMuch)
+    {
+        if (whatKind == 0)
+        {
+            LothoniumAmt += howMuch;
+        }
+        if (whatKind == 1)
+        {
+            RawMaterialsAmt += howMuch;
+        }
+        if (whatKind == 2)
+        {
+            FuleAmt += howMuch;
+        }
+        if (whatKind == 3)
+        {
+            AdvancedPartsAmt += howMuch;
+        }
+        if (whatKind == 4)
+        {
+            MilkyWayDollarsAmt += howMuch;
+        }
+    }
     public void noArmory()
     {
         StartCoroutine(FadeTextToZeroAlpha(fadeDuration));
@@ -103,5 +154,20 @@ public class CurrencyHandler : MonoBehaviour
         }
 
         textToFade.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0);
+    }
+    public void showAddedCurrencys(int[] stuffYoGot)
+    {
+        deeznuts123.SetActive(true);
+        isInMenu = true;
+        LothoniumAmtGain = stuffYoGot[0];
+        RawMaterialsAmtGain = stuffYoGot[1];
+        FuleAmtGain = stuffYoGot[2];
+        AdvancedPartsAmtGain = stuffYoGot[3];
+        MilkyWayDollarsAmtGain = stuffYoGot[4];
+
+    }
+    public void turnOffMenu()
+    {
+        isInMenu = false;
     }
 }

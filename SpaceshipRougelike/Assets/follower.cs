@@ -31,7 +31,10 @@ public class follower : MonoBehaviour
     {
         StartCoroutine(ChangeIsInBattleCoroutine());
     }
-
+    public void IsInBattleFalse()
+    {
+        isInBattle = false;
+    }
     private IEnumerator ChangeIsInBattleCoroutine()
     {
         isBattleChanging = true;

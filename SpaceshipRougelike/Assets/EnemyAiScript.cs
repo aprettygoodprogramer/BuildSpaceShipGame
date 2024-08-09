@@ -18,10 +18,11 @@ public class EnemyAiScript : MonoBehaviour
     public GameObject explosionPrefab;
     public int EnemyHealth;
     public TMP_Text enemyHealthText;
-
+    public GameObject MapButtonRenenable;
     //0 = Lothonium    1 = Raw Mats    2 = Fule    3 = Adv Parts    4 = Milky Way Dollars
     public int[] CurrencyGiveList;
     // Start is called before the first frame update
+    public CurrencyHandler CH;
     void Start()
     {
         audioData = GetComponent<AudioSource>();
@@ -47,9 +48,17 @@ public class EnemyAiScript : MonoBehaviour
             enemyHealthText.text = "Enemy Hull Strength: " + EnemyHealth.ToString();
             if (EnemyHealth <= 0)
             {
-                Follower.ChangeIsInBattle();
+                timerEnded = false;
+                Follower.IsInBattleFalse();
                 GameObject Enemy = GameObject.FindWithTag("Enemy");
                 Destroy(Enemy);
+                MapButtonRenenable.SetActive(true);
+                
+                for (int i = 0; i< CurrencyGiveList.Length; i++)
+                {
+                    CH.AddCurrency(i, CurrencyGiveList[i]);
+                }
+                CH.showAddedCurrencys(CurrencyGiveList);
             }
         }
 
