@@ -10,18 +10,8 @@ public class BlueprintManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string listString = PlayerPrefs.GetString("UnlockedBlueprints", "");
-        if (!string.IsNullOrEmpty(listString))
-        {
-            UnlockedBlueprints = new List<int>(Array.ConvertAll(listString.Split(','), int.Parse));
-        }
-        foreach (int i in UnlockedBlueprints)
-        {
-            if (i == 1)
-            {
-                StunGunButton.SetActive(true);
-            }
-        }
+        
+        LoadBlueprints();
     }
 
     // Update is called once per frame
@@ -31,7 +21,7 @@ public class BlueprintManagerScript : MonoBehaviour
     }
     public int  GetBlueprints()
     {
-        int deez = UnityEngine.Random.Range(0, 1);
+        int deez = 1;
         UnlockedBlueprints.Add(deez);
         SaveBlueprints();
 
@@ -45,6 +35,15 @@ public class BlueprintManagerScript : MonoBehaviour
         if (!string.IsNullOrEmpty(listString))
         {
             UnlockedBlueprints = new List<int>(Array.ConvertAll(listString.Split(','), int.Parse));
+        }
+        foreach (int i in UnlockedBlueprints)
+        {
+            
+            if (i == 1)
+            {
+                Debug.Log("deez my nuts");
+                StunGunButton.SetActive(true);
+            }
         }
     }
     void SaveBlueprints()

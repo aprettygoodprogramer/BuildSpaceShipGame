@@ -170,4 +170,15 @@ public class CurrencyHandler : MonoBehaviour
     {
         isInMenu = false;
     }
+    public void SaveCurrency()
+    {
+        PlayerPrefs.SetInt("Lothonium", LothoniumAmt);
+        PlayerPrefs.SetInt("Raw Materials", RawMaterialsAmt);
+        PlayerPrefs.SetInt("Fule", FuleAmt);
+        PlayerPrefs.SetInt("Advanced Parts", AdvancedPartsAmt);
+        PlayerPrefs.SetInt("Milky Way Dollars", MilkyWayDollarsAmt);
+        PlayerPrefs.Save();
+
+    }
+    
 }

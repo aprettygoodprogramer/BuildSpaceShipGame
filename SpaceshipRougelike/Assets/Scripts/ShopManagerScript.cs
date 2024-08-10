@@ -18,7 +18,7 @@ public class ShopManagerScript : MonoBehaviour
     public BuildingSystemAmtHandler BsAh;
     public HullStrengthScript HSS;
     public AudioSource audioSource;
-
+    public BlastOffScript BOS;
     public GameObject Pg1;
     public GameObject Pg2;
     public int currentShopIndex = 0;
@@ -69,15 +69,18 @@ public class ShopManagerScript : MonoBehaviour
     }
     void Update()
     {
-        if (currentShopIndex == 0)
+        if (BOS.getIsflying() == false)
         {
-            Pg1.SetActive(true);
-            Pg2.SetActive(false);
-        }
-        else if (currentShopIndex == 1)
-        {
-            Pg2.SetActive(true);
-            Pg1.SetActive(false);
+            if (currentShopIndex == 0)
+            {
+                Pg1.SetActive(true);
+                Pg2.SetActive(false);
+            }
+            else if (currentShopIndex == 1)
+            {
+                Pg2.SetActive(true);
+                Pg1.SetActive(false);
+            }
         }
     }
     public void IncreaseShopIndex()

@@ -7,6 +7,7 @@ using TMPro;
 
 public class EnemyAiScript : MonoBehaviour
 {
+
     private bool timerEnded = false;
     public follower Follower;
     private bool isCoroutineRunning = false; 
@@ -19,6 +20,7 @@ public class EnemyAiScript : MonoBehaviour
     public int EnemyHealth;
     public TMP_Text enemyHealthText;
     public SheildManagerScrupo SMS;
+    public BlueprintManagerScript BMS;
     public GameObject MapButtonRenenable;
     //0 = Lothonium    1 = Raw Mats    2 = Fule    3 = Adv Parts    4 = Milky Way Dollars
     public int[] CurrencyGiveList;
@@ -54,12 +56,13 @@ public class EnemyAiScript : MonoBehaviour
                 GameObject Enemy = GameObject.FindWithTag("Enemy");
                 Destroy(Enemy);
                 MapButtonRenenable.SetActive(true);
-                
+                BMS.GetBlueprints();
                 for (int i = 0; i< CurrencyGiveList.Length; i++)
                 {
                     CH.AddCurrency(i, CurrencyGiveList[i]);
                 }
                 CH.showAddedCurrencys(CurrencyGiveList);
+                CH.SaveCurrency(); 
             }
         }
 
