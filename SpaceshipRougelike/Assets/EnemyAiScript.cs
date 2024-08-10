@@ -18,6 +18,7 @@ public class EnemyAiScript : MonoBehaviour
     public GameObject explosionPrefab;
     public int EnemyHealth;
     public TMP_Text enemyHealthText;
+    public SheildManagerScrupo SMS;
     public GameObject MapButtonRenenable;
     //0 = Lothonium    1 = Raw Mats    2 = Fule    3 = Adv Parts    4 = Milky Way Dollars
     public int[] CurrencyGiveList;
@@ -71,7 +72,14 @@ public class EnemyAiScript : MonoBehaviour
         int randomNum = Random.Range(0, AmountWeapon);
         damage = enemyWeapons[randomNum].GetWeaponDamage();
         explodeThingy();
-        HSS.MinusHull(damage);
+        if (SMS.isThereSheild() == true)
+        {
+            SMS.attackSheild(damage);
+        }
+        else
+        {
+            HSS.MinusHull(damage);
+        }
         audioData.Play(0);
     }
     IEnumerator TimerCoroutine()

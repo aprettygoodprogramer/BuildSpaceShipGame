@@ -7,6 +7,7 @@ public class PlayerUiManagerBattleScript : MonoBehaviour
     public follower Follower;
     public BuildingSystemAmtHandler BSAH;
     public GameObject BasicGunButtonPrefab;
+    public GameObject SheildButton;
     public Transform buttonParent;
     public GameObject PannelGameObject;
     private bool buttonsCreated = false;
@@ -44,7 +45,11 @@ public class PlayerUiManagerBattleScript : MonoBehaviour
             
             Instantiate(BasicGunButtonPrefab, buttonParent);
         }
+        if (BSAH.getAmount(2) != 0)
+        {
 
+            Instantiate(SheildButton, buttonParent);
+        }
 
     }
 

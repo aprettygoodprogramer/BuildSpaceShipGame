@@ -15,4 +15,9 @@ public class GiveCurrency : MonoBehaviour
     {
         
     }
+
+    void AddCurrency()
+    {
+
+    }
 }

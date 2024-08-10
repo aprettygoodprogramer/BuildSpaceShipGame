@@ -13,6 +13,10 @@ public class EnergyManager : MonoBehaviour
     public EnemyAiScript EAS;
     public GameObject EnergyGameObject;
     public int damageSet;
+    public BuildingSystemAmtHandler BSAH;
+    public bool hasAddedMaxAmt = false;
+    public int howMuchToAddToMaxEngery;
+    public BlastOffScript BOS;
     void Start()
     {
         currentEnergy = maxEnergy;
@@ -20,6 +24,7 @@ public class EnergyManager : MonoBehaviour
 
     void Update()
     {
+        
         if (Follower.GetIsInBattle() == true)
         {
             EnergyGameObject.SetActive(true);
@@ -30,6 +35,15 @@ public class EnergyManager : MonoBehaviour
         {
             EnergyGameObject.SetActive(false);
         }
+        if (hasAddedMaxAmt == false && BOS.getIsflying() )
+        {
+            howMuchToAddToMaxEngery  = BSAH.getAmount(1);
+            howMuchToAddToMaxEngery = howMuchToAddToMaxEngery * 5;
+            maxEnergy += howMuchToAddToMaxEngery;
+            currentEnergy = maxEnergy; 
+            hasAddedMaxAmt = true;
+        }
+
 
     }
 

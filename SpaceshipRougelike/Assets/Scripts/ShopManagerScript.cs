@@ -13,9 +13,15 @@ public class ShopManagerScript : MonoBehaviour
     public GameObject Armory;
     public GameObject SheildGeneratpr;
     public GameObject basicGun;
+    public GameObject Battery;
     public bool needsArmory = true;
     public BuildingSystemAmtHandler BsAh;
     public HullStrengthScript HSS;
+    public AudioSource audioSource;
+
+    public GameObject Pg1;
+    public GameObject Pg2;
+    public int currentShopIndex = 0;
     public void setHallway()
     {
         placingScript.SetPrefab(Hallway, 0, 5, 0, 0, 7, false, false, false);
@@ -47,6 +53,12 @@ public class ShopManagerScript : MonoBehaviour
         BsAh.setCurrAdd(3);
         HSS.ChangeMuchHull(3);
             }
+    public void setBattery()
+    {
+        placingScript.SetPrefab(Battery, 1, 2, 3, 1, 2, false, false, false);
+        BsAh.setCurrAdd(4);
+        HSS.ChangeMuchHull(1);
+    }
     public bool getArmory()
     {
         return needsArmory;
@@ -55,5 +67,31 @@ public class ShopManagerScript : MonoBehaviour
     {
         needsArmory = false;
     }
+    void Update()
+    {
+        if (currentShopIndex == 0)
+        {
+            Pg1.SetActive(true);
+            Pg2.SetActive(false);
+        }
+        else if (currentShopIndex == 1)
+        {
+            Pg2.SetActive(true);
+            Pg1.SetActive(false);
+        }
+    }
+    public void IncreaseShopIndex()
+    {
+        currentShopIndex += 1;
+        audioSource.Play();
+    }
+    public void DecreaseShopIndex()
+    {
+        if (currentShopIndex > -1)
+        {
+            currentShopIndex -= 1;
+            audioSource.Play();
+        }
 
+    }
 }

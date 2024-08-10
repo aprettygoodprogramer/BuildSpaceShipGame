@@ -7,6 +7,7 @@ public class TakeEnergyScript : MonoBehaviour
 {
     private EnergyManager EM;
     private EnemyAiScript EAS;
+    private SheildManagerScrupo SMS;
     public float EnergyConsumed  = 30f;
     private bool hasGot = false;
     public int Damage;
@@ -16,6 +17,10 @@ public class TakeEnergyScript : MonoBehaviour
     {
         GameObject EMObject = GameObject.Find("EnemyAiManager");
         EAS = EMObject.GetComponent<EnemyAiScript>();
+
+        GameObject SMSObject = GameObject.Find("SheildManager");
+        SMS = SMSObject.GetComponent<SheildManagerScrupo>();
+
     }
 
     // Update is called once per frame
@@ -36,6 +41,11 @@ public class TakeEnergyScript : MonoBehaviour
     public void DoDamage()
     {
         EM.setDamageInt(Damage);
+    }
+
+    public void activateSheild()
+    {
+        SMS.turnOnSheild();
     }
     
     
