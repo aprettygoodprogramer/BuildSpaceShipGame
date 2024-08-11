@@ -1,16 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Transactions;
 using UnityEngine;
 using TMPro;
 
 public class EnemyAiScript : MonoBehaviour
 {
-
     private bool timerEnded = false;
     public follower Follower;
-    private bool isCoroutineRunning = false; 
+    private bool isCoroutineRunning = false;
     private Weapon[] enemyWeapons;
     private int AmountWeapon;
     public HullStrengthScript HSS;
@@ -22,30 +20,33 @@ public class EnemyAiScript : MonoBehaviour
     public SheildManagerScrupo SMS;
     public BlueprintManagerScript BMS;
     public GameObject MapButtonRenenable;
-    //0 = Lothonium    1 = Raw Mats    2 = Fule    3 = Adv Parts    4 = Milky Way Dollars
     public int[] CurrencyGiveList;
-    // Start is called before the first frame update
     public CurrencyHandler CH;
+    public bool isStuns;
+
     void Start()
     {
         audioData = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        Debug.Log(isStuns);
 
-        if (Follower.GetIsInBattle() == true && !isCoroutineRunning)
+        if (Follower.GetIsInBattle() && !isCoroutineRunning)
         {
             StartCoroutine(TimerCoroutine());
         }
 
         if (timerEnded)
         {
-            
-            ATTACK();
-            timerEnded = false;
+            if (!isStuns)
+            {
+                ATTACK();
+                timerEnded = false;
+            }
         }
+
         if (Follower.GetIsInBattle())
         {
             enemyHealthText.text = "Enemy Hull Strength: " + EnemyHealth.ToString();
@@ -57,25 +58,25 @@ public class EnemyAiScript : MonoBehaviour
                 Destroy(Enemy);
                 MapButtonRenenable.SetActive(true);
                 BMS.GetBlueprints();
-                for (int i = 0; i< CurrencyGiveList.Length; i++)
+                for (int i = 0; i < CurrencyGiveList.Length; i++)
                 {
                     CH.AddCurrency(i, CurrencyGiveList[i]);
                 }
                 CH.showAddedCurrencys(CurrencyGiveList);
-                CH.SaveCurrency(); 
+                CH.SaveCurrency();
+                BMS.showBlueprintsUi();
             }
         }
-
     }
 
     void ATTACK()
     {
-        
         int damage;
         int randomNum = Random.Range(0, AmountWeapon);
         damage = enemyWeapons[randomNum].GetWeaponDamage();
         explodeThingy();
-        if (SMS.isThereSheild() == true)
+
+        if (SMS.isThereSheild())
         {
             SMS.attackSheild(damage);
         }
@@ -83,32 +84,42 @@ public class EnemyAiScript : MonoBehaviour
         {
             HSS.MinusHull(damage);
         }
+
         audioData.Play(0);
     }
+
     IEnumerator TimerCoroutine()
     {
         isCoroutineRunning = true;
 
         while (Follower.GetIsInBattle())
         {
-            float waitTime = Random.Range(3f, 7f);
-
-            yield return new WaitForSeconds(waitTime);
-
-            timerEnded = true;
+            if (!isStuns)
+            {
+                float waitTime = Random.Range(3f, 7f);
+                yield return new WaitForSeconds(waitTime);
+                timerEnded = true;
+            }
+            else
+            {
+                yield return null; // Wait without attacking if stunned
+            }
         }
 
         isCoroutineRunning = false;
     }
+
     public void getWeaponsForAi(Weapon[] weaponsHave)
     {
         enemyWeapons = weaponsHave;
         AmountWeapon = enemyWeapons.Count();
     }
+
     public void getHealthForAi(int funcHealth)
     {
         EnemyHealth = funcHealth;
     }
+
     void explodeThingy()
     {
         int Children = parentObject.transform.childCount;
@@ -119,12 +130,29 @@ public class EnemyAiScript : MonoBehaviour
 
         Instantiate(explosionPrefab, childPosition, Quaternion.identity);
     }
+
     public void takeDamage(int healthTaken)
     {
         EnemyHealth -= healthTaken;
     }
+
     public void howMuchGiveWhenDefeat(int[] giveList)
     {
         CurrencyGiveList = giveList;
+    }
+
+    public void StunEnemy(float stunDuration)
+    {
+        if (!isStuns) // Only stun if not already stunned
+        {
+            StartCoroutine(StunCoroutine(stunDuration));
+        }
+    }
+
+    private IEnumerator StunCoroutine(float stunDuration)
+    {
+        isStuns = true;
+        yield return new WaitForSeconds(stunDuration);
+        isStuns = false;
     }
 }

@@ -7,6 +7,11 @@ public class BlueprintManagerScript : MonoBehaviour
 {
     List<int> UnlockedBlueprints = new List<int>();
     public GameObject StunGunButton;
+    public Transform Pannel;
+    public GameObject StunGunButtonPrefab;
+    public GameObject GeneraterPrefab;
+    public GameObject GeneraterButon;
+    public int deez;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,14 +24,21 @@ public class BlueprintManagerScript : MonoBehaviour
     {
         
     }
-    public int  GetBlueprints()
+    public void  GetBlueprints()
     {
-        int deez = 1;
+         deez = UnityEngine.Random.Range(1, 3); 
+        foreach (int blueprint in UnlockedBlueprints)
+        {
+            if (blueprint == (deez))
+            {
+                deez = UnityEngine.Random.Range(1, 3);
+            }
+        }
         UnlockedBlueprints.Add(deez);
         SaveBlueprints();
 
 
-        return deez;
+        
 
     }
     void LoadBlueprints()
@@ -44,6 +56,10 @@ public class BlueprintManagerScript : MonoBehaviour
                 Debug.Log("deez my nuts");
                 StunGunButton.SetActive(true);
             }
+            if (i == 2)
+            {
+                GeneraterButon.SetActive(true);
+            }
         }
     }
     void SaveBlueprints()
@@ -55,5 +71,18 @@ public class BlueprintManagerScript : MonoBehaviour
     public void DeleteSaveData()
     {
         PlayerPrefs.DeleteAll();
+    }
+
+    public void showBlueprintsUi()
+    {
+        if (deez == 1)
+        {
+            Instantiate(StunGunButtonPrefab, Pannel);
+        }
+        if (deez == 2)
+        {
+            Instantiate(GeneraterPrefab, Pannel);
+        }
+        
     }
 }

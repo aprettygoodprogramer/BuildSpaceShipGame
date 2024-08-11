@@ -10,6 +10,7 @@ public class PlayerUiManagerBattleScript : MonoBehaviour
     public GameObject SheildButton;
     public Transform buttonParent;
     public GameObject PannelGameObject;
+    public GameObject StunGunButton;
     private bool buttonsCreated = false;
 
     // Start is called before the first frame update
@@ -49,6 +50,11 @@ public class PlayerUiManagerBattleScript : MonoBehaviour
         {
 
             Instantiate(SheildButton, buttonParent);
+        }
+
+        if (BSAH.getAmount(3) != 0)
+        {
+            Instantiate(StunGunButton, buttonParent);
         }
 
     }

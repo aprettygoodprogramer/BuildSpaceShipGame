@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BlastOffScript : MonoBehaviour
@@ -8,6 +9,7 @@ public class BlastOffScript : MonoBehaviour
     public GameObject goButton;
     public GameObject shopMenu;
     public GameObject ShopMenuPg2;
+    public CurrencyHandler CH;
     public float acceleration = 20f; 
     private float speed = 5f; 
     private bool isFlying = false;
@@ -15,6 +17,7 @@ public class BlastOffScript : MonoBehaviour
     public Transform ownTransform;
     public shipAnimationScript hehe;
     public bool hasBlastedOff;
+    public bool HasSave; 
     void Update()
     {
         if (hehe.GetShipIsMoving())
@@ -29,7 +32,11 @@ public class BlastOffScript : MonoBehaviour
 
     void FixedUpdate()
     {
-
+        if (HasSave == false)
+        {
+            CH.SaveCurrency();
+            HasSave = true;
+        }
         if (isFlying)
         {
             startBlastoff();

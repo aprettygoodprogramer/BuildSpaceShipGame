@@ -10,6 +10,8 @@ public class BuildingSystemAmtHandler : MonoBehaviour
     private int amtBasicGun;
     private int amtBattery;
     private int currAdd;
+    private int amtStunGun;
+    private int amtGenerator;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,14 @@ public class BuildingSystemAmtHandler : MonoBehaviour
         if (whatKind == 2)
         {
             return amtSheildGen;
+        }
+        if (whatKind == 3)
+        {
+            return amtStunGun;
+        }
+        if (whatKind == 4)
+        {
+            return amtGenerator;
         }
 
         return 0;
@@ -63,6 +73,14 @@ public class BuildingSystemAmtHandler : MonoBehaviour
         if (currAdd == 4)
         {
             amtBattery++;
+        }
+        if (currAdd == 5)
+        {
+            amtStunGun++;   
+        }
+        if (currAdd == 6)
+        {
+            amtGenerator++;
         }
     }
 

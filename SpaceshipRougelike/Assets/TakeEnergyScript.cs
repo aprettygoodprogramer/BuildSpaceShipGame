@@ -47,6 +47,12 @@ public class TakeEnergyScript : MonoBehaviour
     {
         SMS.turnOnSheild();
     }
+
+    public void StunEnemy()
+    {
+        
+        EAS.StunEnemy(10f);
+    }
     
     
 }

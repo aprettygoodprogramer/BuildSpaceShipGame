@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lothonium: 3
+  m_text: 'Lothonium: 6
 
 
 '
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Raw Materials: 2
+  m_text: 'Raw Materials: 4
 
 '
   m_isRightToLeft: 0
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Stun Gun
+  m_text: 'Generator
 
 '
   m_isRightToLeft: 0
@@ -688,7 +688,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Fule: 4
+  m_text: 'Fule: = 0
 
 '
   m_isRightToLeft: 0
@@ -825,7 +825,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Advanced Parts: 2
+  m_text: 'Advanced Parts: 10
 
 
 
@@ -951,7 +951,7 @@ GameObject:
   - component: {fileID: -2988727266771636449}
   - component: {fileID: -7043181099685256086}
   m_Layer: 5
-  m_Name: StunGun
+  m_Name: Generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1080,7 +1080,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' Milky Way Dollars: 3
+  m_text: ' Milky Way Dollars: 10
 
 
 

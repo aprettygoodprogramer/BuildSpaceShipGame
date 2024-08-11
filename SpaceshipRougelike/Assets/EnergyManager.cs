@@ -16,6 +16,7 @@ public class EnergyManager : MonoBehaviour
     public BuildingSystemAmtHandler BSAH;
     public bool hasAddedMaxAmt = false;
     public int howMuchToAddToMaxEngery;
+    public int howMuchToAddToRegen;
     public BlastOffScript BOS;
     void Start()
     {
@@ -41,6 +42,11 @@ public class EnergyManager : MonoBehaviour
             howMuchToAddToMaxEngery = howMuchToAddToMaxEngery * 5;
             maxEnergy += howMuchToAddToMaxEngery;
             currentEnergy = maxEnergy; 
+            //Generator Code
+            howMuchToAddToRegen = BSAH.getAmount(4);
+            howMuchToAddToRegen *= 2;
+            regenRate += howMuchToAddToRegen;
+
             hasAddedMaxAmt = true;
         }
 

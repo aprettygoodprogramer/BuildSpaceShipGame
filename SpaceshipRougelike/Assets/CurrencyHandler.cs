@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
+
 public class CurrencyHandler : MonoBehaviour
 {
     int LothoniumAmt = 1000;
@@ -33,12 +35,35 @@ public class CurrencyHandler : MonoBehaviour
     int FuleAmtGain = 0;
     int AdvancedPartsAmtGain = 0;
     int MilkyWayDollarsAmtGain = 0;
+    public string StartOfGame = "1";
     // Start is called before the first frame update
     void Start()
     {
         Color color = textToFade.color;
         color.a = 0;
         textToFade.color = color;
+
+        if (!PlayerPrefs.HasKey("StartOfGame"))
+        {
+            LothoniumAmt = 1000;
+            RawMaterialsAmt = 1000;
+            FuleAmt = 1000;
+            AdvancedPartsAmt = 1000;
+            MilkyWayDollarsAmt = 1000;
+            PlayerPrefs.SetString("StartOfGame", "2");
+            PlayerPrefs.Save();
+        }
+        else
+        {
+
+
+
+            LothoniumAmt = PlayerPrefs.GetInt("Lothonium", 0);
+            RawMaterialsAmt = PlayerPrefs.GetInt("Raw Materials", 0);
+            FuleAmt = PlayerPrefs.GetInt("Fule", 0);
+            AdvancedPartsAmt = PlayerPrefs.GetInt("Advanced Parts", 0);
+            MilkyWayDollarsAmt = PlayerPrefs.GetInt("Milky Way Dollars", 0);
+        }
     }
 
     // Update is called once per frame
@@ -180,5 +205,14 @@ public class CurrencyHandler : MonoBehaviour
         PlayerPrefs.Save();
 
     }
-    
+    void OnApplicationQuit()
+    {
+        SaveCurrency();
+    }
+    public bool GetIsInMenu()
+    {
+        return isInMenu;
+    }
+
+
 }

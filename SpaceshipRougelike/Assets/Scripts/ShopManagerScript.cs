@@ -14,6 +14,8 @@ public class ShopManagerScript : MonoBehaviour
     public GameObject SheildGeneratpr;
     public GameObject basicGun;
     public GameObject Battery;
+    public GameObject StunGunPrefab;
+    public GameObject Generator;
     public bool needsArmory = true;
     public BuildingSystemAmtHandler BsAh;
     public HullStrengthScript HSS;
@@ -58,6 +60,18 @@ public class ShopManagerScript : MonoBehaviour
         placingScript.SetPrefab(Battery, 1, 2, 3, 1, 2, false, false, false);
         BsAh.setCurrAdd(4);
         HSS.ChangeMuchHull(1);
+    }
+    public void setStunGun()
+    {
+        placingScript.SetPrefab(StunGunPrefab, 2, 1, 1, 4, 6, true, false, true);
+        BsAh.setCurrAdd(5);
+        HSS.ChangeMuchHull(2);
+    }
+    public void setGenerator()
+    {
+        placingScript.SetPrefab(Generator, 6, 4, 0, 10, 10, false, false, false);
+        BsAh.setCurrAdd(6);
+        HSS.ChangeMuchHull(3);
     }
     public bool getArmory()
     {
