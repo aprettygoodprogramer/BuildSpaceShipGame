@@ -9,6 +9,8 @@ public class EnemyShipSpwaner : MonoBehaviour
     public follower Follower123;
     public EnemySpaceshipScript ESS123;
     public EnemyAiScript EAS;
+    public GameObject ShopGameObject;
+    public SpaceShopScript SSS;
     Weapon myWeapon = new Weapon(3, false);
     Weapon myWeapon1 = new Weapon(6, false);
     Weapon myWeapon2 = new Weapon( 2, false);
@@ -40,6 +42,11 @@ public class EnemyShipSpwaner : MonoBehaviour
         int[] weaponGive = {1, 2, 0, 0, 6};
         EAS.howMuchGiveWhenDefeat(weaponGive);
         EAS.getWeaponsForAi(weapons.ToArray());
+    }
+    public void SpwanShop()
+    {
+        ShopGameObject.SetActive(true);
+        SSS.SpaceshopTrue();
     }
 }
 public class Weapon

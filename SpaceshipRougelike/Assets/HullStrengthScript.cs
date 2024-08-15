@@ -50,4 +50,8 @@ public class HullStrengthScript : MonoBehaviour
     {
         HullStrength -= heeheh;
     }
+    public void FullyRepairHull()
+    {
+        HullStrength = HullStrengthMax;
+    }
 }

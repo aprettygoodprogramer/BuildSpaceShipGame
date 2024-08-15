@@ -440,7 +440,7 @@ RectTransform:
   m_GameObject: {fileID: 2739549052312304574}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1125, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3648566745138636718}
@@ -512,9 +512,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
-    m_PressedColor: {r: 0, g: 0, b: 0, a: 0}
-    m_SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 0}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 0}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -534,9 +534,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ShopManagerScript, Assembly-CSharp
-        m_MethodName: setBasicGun
+      - m_Target: {fileID: -7043181099685256086}
+        m_TargetAssemblyTypeName: ExploisionScript, Assembly-CSharp
+        m_MethodName: onClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -966,7 +966,7 @@ RectTransform:
   m_GameObject: {fileID: 8549001442292973073}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.12446294, y: 0.6273438, z: 1}
+  m_LocalScale: {x: 0.42161822, y: 0.6273438, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5066543180972348123}
@@ -1014,6 +1014,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsButton: 1
   CH: {fileID: 0}
+  WhatShopIndex: 1
+  SSS: {fileID: 0}
 --- !u!1 &8646734545669544998
 GameObject:
   m_ObjectHideFlags: 0

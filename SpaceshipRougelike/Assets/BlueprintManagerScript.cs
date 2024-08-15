@@ -11,6 +11,7 @@ public class BlueprintManagerScript : MonoBehaviour
     public GameObject StunGunButtonPrefab;
     public GameObject GeneraterPrefab;
     public GameObject GeneraterButon;
+    public Transform PannelForShop;
     public int deez;
     // Start is called before the first frame update
     void Start()
@@ -26,19 +27,25 @@ public class BlueprintManagerScript : MonoBehaviour
     }
     public void  GetBlueprints()
     {
-         deez = UnityEngine.Random.Range(1, 3); 
-        foreach (int blueprint in UnlockedBlueprints)
+        int deez = UnityEngine.Random.Range(1, 3);
+
+        if (UnlockedBlueprints.Count >= 2)
         {
-            if (blueprint == (deez))
+
+        }
+        else
+        {
+            while (UnlockedBlueprints.Contains(deez))
             {
                 deez = UnityEngine.Random.Range(1, 3);
             }
+
+            UnlockedBlueprints.Add(deez);
+            SaveBlueprints();
         }
-        UnlockedBlueprints.Add(deez);
-        SaveBlueprints();
 
 
-        
+
 
     }
     void LoadBlueprints()
@@ -84,5 +91,21 @@ public class BlueprintManagerScript : MonoBehaviour
             Instantiate(GeneraterPrefab, Pannel);
         }
         
+    }
+    public void showBlueprintUiShop()
+    {
+        Debug.Log("yooo LLLL");
+        int skibidi = UnityEngine.Random.Range(1,3);
+        if (skibidi == 1)
+        {
+            Debug.Log("yooo");
+            Instantiate(StunGunButtonPrefab, PannelForShop); 
+        }
+        else if (skibidi == 2)
+        {
+            Debug.Log("yooo");
+            Instantiate(GeneraterPrefab, PannelForShop);
+        }
+
     }
 }
