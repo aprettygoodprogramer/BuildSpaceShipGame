@@ -49,4 +49,8 @@ public class SpaceShopScript : MonoBehaviour
     {
         return isInShop;
     }
+    public void SpaceshopFalse()
+    {
+        isInShop = false;
+    }
 }

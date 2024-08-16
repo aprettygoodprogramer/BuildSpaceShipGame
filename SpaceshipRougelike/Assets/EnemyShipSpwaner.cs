@@ -48,6 +48,12 @@ public class EnemyShipSpwaner : MonoBehaviour
         ShopGameObject.SetActive(true);
         SSS.SpaceshopTrue();
     }
+
+    public void DisableShop()
+    {
+        ShopGameObject.SetActive(false);
+        SSS.SpaceshopFalse();
+    }
 }
 public class Weapon
 {

@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,14 +10,18 @@ public class NodeScript : MonoBehaviour
     public GameObject Map;
     public GameObject testShip;
     public EnemyShipSpwaner ESS;
+    public SpaceShopScript SSS;
     public int WhatRandomEvent;
     void Start()
     {
+        GameObject EMObject = GameObject.Find("SpaceShopManager");
+        SSS = EMObject.GetComponent<SpaceShopScript>();
         whatTypeOfPlanet = Random.Range(1, 5);
     }
 
     public void OnButtonPress()
     {
+        SSS.SpaceshopFalse();
         if (whatTypeOfPlanet == 1) {
             ShipAnimationScript.ChangeShipIsMoving(true);
             ShipAnimationScript.ChangeWhereTeleport(-10.17479f, -26.22f);
