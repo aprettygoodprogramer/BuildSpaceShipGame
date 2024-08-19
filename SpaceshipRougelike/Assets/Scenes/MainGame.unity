@@ -5594,6 +5594,7 @@ MonoBehaviour:
   Map: {fileID: 1552107428}
   testShip: {fileID: 1324446012335068346, guid: 7e7b161f72ea6c542b7b17f1f712b10f, type: 3}
   ESS: {fileID: 810801503}
+  SSS: {fileID: 0}
   WhatRandomEvent: 0
 --- !u!114 &666423185
 MonoBehaviour:
@@ -6221,6 +6222,7 @@ MonoBehaviour:
   Map: {fileID: 1552107428}
   testShip: {fileID: 1324446012335068346, guid: 7e7b161f72ea6c542b7b17f1f712b10f, type: 3}
   ESS: {fileID: 810801503}
+  SSS: {fileID: 0}
   WhatRandomEvent: 0
 --- !u!114 &722133331
 MonoBehaviour:
@@ -9062,6 +9064,7 @@ MonoBehaviour:
   Map: {fileID: 1552107428}
   testShip: {fileID: 1324446012335068346, guid: 7e7b161f72ea6c542b7b17f1f712b10f, type: 3}
   ESS: {fileID: 810801503}
+  SSS: {fileID: 0}
   WhatRandomEvent: 0
 --- !u!114 &1016595674
 MonoBehaviour:
@@ -10110,6 +10113,7 @@ MonoBehaviour:
   Map: {fileID: 1552107428}
   testShip: {fileID: 1324446012335068346, guid: 7e7b161f72ea6c542b7b17f1f712b10f, type: 3}
   ESS: {fileID: 810801503}
+  SSS: {fileID: 0}
   WhatRandomEvent: 0
 --- !u!114 &1175955836
 MonoBehaviour:
@@ -11339,6 +11343,7 @@ MonoBehaviour:
   HSS: {fileID: 1687137752}
   isInShop: 0
   hasSpwanedBlueprints: 0
+  shopUI: {fileID: 1168836230}
 --- !u!4 &1323359536
 Transform:
   m_ObjectHideFlags: 0
@@ -12844,6 +12849,7 @@ MonoBehaviour:
   Map: {fileID: 1552107428}
   testShip: {fileID: 1324446012335068346, guid: 7e7b161f72ea6c542b7b17f1f712b10f, type: 3}
   ESS: {fileID: 810801503}
+  SSS: {fileID: 0}
   WhatRandomEvent: 0
 --- !u!114 &1545599256
 MonoBehaviour:
@@ -13884,6 +13890,7 @@ MonoBehaviour:
   Map: {fileID: 1552107428}
   testShip: {fileID: 1324446012335068346, guid: 7e7b161f72ea6c542b7b17f1f712b10f, type: 3}
   ESS: {fileID: 810801503}
+  SSS: {fileID: 0}
   WhatRandomEvent: 0
 --- !u!114 &1647792752
 MonoBehaviour:
@@ -15457,6 +15464,7 @@ MonoBehaviour:
   Map: {fileID: 1552107428}
   testShip: {fileID: 1324446012335068346, guid: 7e7b161f72ea6c542b7b17f1f712b10f, type: 3}
   ESS: {fileID: 810801503}
+  SSS: {fileID: 0}
   WhatRandomEvent: 0
 --- !u!114 &1754856393
 MonoBehaviour:
@@ -16984,6 +16992,7 @@ MonoBehaviour:
   Map: {fileID: 1552107428}
   testShip: {fileID: 1324446012335068346, guid: 7e7b161f72ea6c542b7b17f1f712b10f, type: 3}
   ESS: {fileID: 810801503}
+  SSS: {fileID: 0}
   WhatRandomEvent: 0
 --- !u!114 &1945528937
 MonoBehaviour:
@@ -17272,7 +17281,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
+  m_ChildAlignment: 0
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0

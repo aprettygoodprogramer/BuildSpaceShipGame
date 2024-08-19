@@ -48,6 +48,11 @@ public class BlueprintManagerScript : MonoBehaviour
 
 
     }
+    public void addBlueprints(int index)
+    {
+        UnlockedBlueprints.Add(index);
+        SaveBlueprints();
+    }
     void LoadBlueprints()
     {
         string listString = PlayerPrefs.GetString("UnlockedBlueprints", "");

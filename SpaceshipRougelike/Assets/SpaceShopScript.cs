@@ -32,6 +32,7 @@ public class SpaceShopScript : MonoBehaviour
         else
         {
             shopUI.SetActive(false);
+            hasSpwanedBlueprints = false;
         }
     }
     public void RepairHull()

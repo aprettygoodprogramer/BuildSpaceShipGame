@@ -1016,6 +1016,7 @@ MonoBehaviour:
   CH: {fileID: 0}
   WhatShopIndex: 2
   SSS: {fileID: 0}
+  price: 0
 --- !u!1 &8646734545669544998
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,9 +1042,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8646734545669544998}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.98232, y: 0.98232, z: 0.98232}
+  m_LocalScale: {x: 0.98232, y: 0.9823201, z: 0.98232}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 885812802278732827}
