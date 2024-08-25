@@ -16,6 +16,8 @@ public class ShopManagerScript : MonoBehaviour
     public GameObject Battery;
     public GameObject StunGunPrefab;
     public GameObject Generator;
+    public GameObject MachineGunPrefab;
+    public GameObject LazerGunPrefab;
     public bool needsArmory = true;
     public BuildingSystemAmtHandler BsAh;
     public HullStrengthScript HSS;
@@ -72,6 +74,18 @@ public class ShopManagerScript : MonoBehaviour
         placingScript.SetPrefab(Generator, 6, 4, 0, 10, 10, false, false, false);
         BsAh.setCurrAdd(6);
         HSS.ChangeMuchHull(3);
+    }
+    public void setMachineGun()
+    {
+        placingScript.SetPrefab(MachineGunPrefab, 2, 3, 4, 2, 10, true, false, true);
+        BsAh.setCurrAdd(7);
+        HSS.ChangeMuchHull(2);
+    }
+    public void setLazerGun()
+    {
+        placingScript.SetPrefab(LazerGunPrefab, 1, 2, 4, 5, 7, true, false, true);
+        BsAh.setCurrAdd(8);
+        HSS.ChangeMuchHull(1);
     }
     public bool getArmory()
     {

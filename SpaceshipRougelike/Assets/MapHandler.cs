@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class MapHandler : MonoBehaviour
 {
     //1 = where you are
@@ -22,5 +23,11 @@ public class MapHandler : MonoBehaviour
     void Update()
     {
         
+    }
+    //idk why I did this in this file
+    //update, it was becauase I was lazy
+    public void nextSence()
+    {
+        SceneManager.LoadScene(2);
     }
 }

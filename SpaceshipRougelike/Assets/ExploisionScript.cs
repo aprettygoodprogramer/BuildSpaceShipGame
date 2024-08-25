@@ -35,8 +35,13 @@ public class ExploisionScript : MonoBehaviour
         {
             if (CH.GetIsInMenu() == false && SSS.isInShopA() == false)
             {
-                //DestroySelf();
+                DestroySelf();
             }
+
+        }
+        if (SSS.isInShopA() == true)
+        {
+           SSS.setCost(price);
         }
 
 
@@ -49,7 +54,8 @@ public class ExploisionScript : MonoBehaviour
     {
         if (SSS.isInShopA() == true)
         {
-            
+            if (CH.getCurrency(4) >= price)
+
             BM.addBlueprints(WhatShopIndex);
             DestroySelf();
         }

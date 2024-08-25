@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using TMPro;
+using JetBrains.Annotations;
 
 public class SpaceShopScript : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class SpaceShopScript : MonoBehaviour
     public bool isInShop;
     public bool hasSpwanedBlueprints;
     public GameObject shopUI;
+    public TMP_Text Cost;
+    public int costInt;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,11 +32,16 @@ public class SpaceShopScript : MonoBehaviour
                 BM.showBlueprintUiShop();
                 hasSpwanedBlueprints = true;
             }
+            Cost.text = "Cost (MWD): " + costInt.ToString();
         }
         else
         {
             shopUI.SetActive(false);
             hasSpwanedBlueprints = false;
+        }
+        if (isInShop == false)
+        {
+            shopUI.SetActive(false);
         }
     }
     public void RepairHull()
@@ -53,5 +62,9 @@ public class SpaceShopScript : MonoBehaviour
     public void SpaceshopFalse()
     {
         isInShop = false;
+    }
+    public void setCost(int price)
+    {
+        costInt = price;
     }
 }

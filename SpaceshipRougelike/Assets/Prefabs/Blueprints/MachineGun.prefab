@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lothonium: 1
+  m_text: 'Lothonium: 2
 
 
 '
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Raw Materials: 2
+  m_text: 'Raw Materials: 3
 
 '
   m_isRightToLeft: 0
@@ -341,7 +341,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lazer Gun
+  m_text: 'Machine Gun
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -610,7 +612,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 47f63e6871ac32740b926e48547a0e27, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85d09aa0e7cd7bc4098749cc714365bf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -823,7 +825,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Advanced Parts: 5
+  m_text: 'Advanced Parts: 2
 
 
 
@@ -949,7 +951,7 @@ GameObject:
   - component: {fileID: -2988727266771636449}
   - component: {fileID: -7043181099685256086}
   m_Layer: 5
-  m_Name: StunGun
+  m_Name: MachineGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1012,7 +1014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsButton: 1
   CH: {fileID: 0}
-  WhatShopIndex: 1
+  WhatShopIndex: 3
   SSS: {fileID: 0}
   price: 25
 --- !u!1 &8646734545669544998
@@ -1081,7 +1083,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' Milky Way Dollars: 7
+  m_text: ' Milky Way Dollars: 10
+
 
 
 

@@ -40,7 +40,7 @@ public class HullStrengthScript : MonoBehaviour
     }
     public int GetMuchHullStrength()
     {
-        return HowMuchHullStrengthToAdd;
+        return HullStrength;
     }
     public void SetHowMuchHullToHullStrenght()
     {

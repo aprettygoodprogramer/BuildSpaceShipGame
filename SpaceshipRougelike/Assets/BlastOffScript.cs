@@ -17,7 +17,10 @@ public class BlastOffScript : MonoBehaviour
     public Transform ownTransform;
     public shipAnimationScript hehe;
     public bool hasBlastedOff;
-    public bool HasSave; 
+    public bool HasSave;
+    public GameObject Map;
+    public BuildingSystemAmtHandler BSAH;
+
     void Update()
     {
         if (hehe.GetShipIsMoving())
@@ -45,11 +48,26 @@ public class BlastOffScript : MonoBehaviour
    
     public void blastOff()
     {
-        ShopMenu.SetActive(false);
-        goButton.SetActive(false);
-        ShopMenuPg2.SetActive(false);
+        if (BSAH.getAmount(6) != 0)
+        {
+            ShopMenu.SetActive(false);
+            goButton.SetActive(false);
+            ShopMenuPg2.SetActive(false);
 
-        isFlying = true;
+            isFlying = true;
+        }
+        else
+        {
+            CH.NoThrustors();
+        }
+
+    }
+    public void setMap()
+    {
+        if (isFlying == true)
+        {
+            Map.SetActive(true);
+        }
 
     }
     void startBlastoff()

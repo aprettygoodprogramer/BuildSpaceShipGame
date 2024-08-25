@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using JetBrains.Annotations;
 
 public class CurrencyHandler : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class CurrencyHandler : MonoBehaviour
     int AdvancedPartsAmt = 1000;
     int MilkyWayDollarsAmt = 1000;
     public TextMeshProUGUI textToFade;
+
+
+    public TextMeshProUGUI textToFade2;
+
 
     public float fadeDuration = 3.5f;
     public TMP_Text LothoniumTxt;
@@ -42,6 +47,11 @@ public class CurrencyHandler : MonoBehaviour
         Color color = textToFade.color;
         color.a = 0;
         textToFade.color = color;
+
+        Color color2 = textToFade2.color;
+        color2.a = 0;
+        textToFade2.color = color2;
+
 
         if (!PlayerPrefs.HasKey("StartOfGame"))
         {
@@ -163,22 +173,44 @@ public class CurrencyHandler : MonoBehaviour
     }
     public void noArmory()
     {
-        StartCoroutine(FadeTextToZeroAlpha(fadeDuration));
+        StartCoroutine(FadeTextToZeroAlpha(fadeDuration, 1));
     }
-    private IEnumerator FadeTextToZeroAlpha(float duration)
+    public void NoThrustors()
     {
-        Color originalColor = textToFade.color;
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
+        StartCoroutine(FadeTextToZeroAlpha(fadeDuration, 2));
+    }
+    private IEnumerator FadeTextToZeroAlpha(float duration, int whichOne)
+    {
+        if (whichOne == 1)
         {
-            elapsedTime += Time.deltaTime;
-            float alpha = Mathf.Clamp01(1.0f - (elapsedTime / duration));
-            textToFade.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
-            yield return null;
-        }
+            Color originalColor = textToFade.color;
+            float elapsedTime = 0f;
 
-        textToFade.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0);
+            while (elapsedTime < duration)
+            {
+                elapsedTime += Time.deltaTime;
+                float alpha = Mathf.Clamp01(1.0f - (elapsedTime / duration));
+                textToFade.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+                yield return null;
+            }
+
+            textToFade.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0);
+        }
+        else if (whichOne == 2)
+        {
+            Color originalColor = textToFade2.color;
+            float elapsedTime = 0f;
+
+            while (elapsedTime < duration)
+            {
+                elapsedTime += Time.deltaTime;
+                float alpha = Mathf.Clamp01(1.0f - (elapsedTime / duration));
+                textToFade2.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+                yield return null;
+            }
+
+            textToFade2.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0);
+        }
     }
     public void showAddedCurrencys(int[] stuffYoGot)
     {

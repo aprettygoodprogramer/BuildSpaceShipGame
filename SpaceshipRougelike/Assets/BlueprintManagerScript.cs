@@ -10,7 +10,11 @@ public class BlueprintManagerScript : MonoBehaviour
     public Transform Pannel;
     public GameObject StunGunButtonPrefab;
     public GameObject GeneraterPrefab;
+    public GameObject LazerGun;
+    public GameObject LazerGunPrefab;
     public GameObject GeneraterButon;
+    public GameObject MachinegunButtonPregab;
+    public GameObject MachineGunPrefab1;
     public Transform PannelForShop;
     public int deez;
     // Start is called before the first frame update
@@ -27,23 +31,26 @@ public class BlueprintManagerScript : MonoBehaviour
     }
     public void  GetBlueprints()
     {
-        int deez = UnityEngine.Random.Range(1, 3);
+        //int chance = UnityEngine.Random.Range(1, 3);
+        
+        
+            deez = UnityEngine.Random.Range(1, 5);
 
-        if (UnlockedBlueprints.Count >= 2)
-        {
-
-        }
-        else
-        {
-            while (UnlockedBlueprints.Contains(deez))
+            if (UnlockedBlueprints.Count >= 4)
             {
-                deez = UnityEngine.Random.Range(1, 3);
+
             }
+            else
+            {
+                while (UnlockedBlueprints.Contains(deez))
+                {
+                    deez = UnityEngine.Random.Range(1, 5);
+                }
 
-            UnlockedBlueprints.Add(deez);
-            SaveBlueprints();
-        }
-
+                UnlockedBlueprints.Add(deez);
+                SaveBlueprints();
+            }
+        
 
 
 
@@ -72,6 +79,14 @@ public class BlueprintManagerScript : MonoBehaviour
             {
                 GeneraterButon.SetActive(true);
             }
+            if (i == 3)
+            {
+                MachinegunButtonPregab.SetActive(true);
+            }
+            if (i == 4)
+            {
+                LazerGun.SetActive(true);
+            }
         }
     }
     void SaveBlueprints()
@@ -90,26 +105,42 @@ public class BlueprintManagerScript : MonoBehaviour
         if (deez == 1)
         {
             Instantiate(StunGunButtonPrefab, Pannel);
+
         }
         if (deez == 2)
         {
             Instantiate(GeneraterPrefab, Pannel);
+  
         }
-        
+        if (deez == 3)
+        {
+            Instantiate(MachineGunPrefab1, Pannel);
+        }
+        if (deez == 4)
+        {
+            Instantiate(LazerGunPrefab, Pannel);
+        }
+
     }
     public void showBlueprintUiShop()
     {
-        Debug.Log("yooo LLLL");
-        int skibidi = UnityEngine.Random.Range(1,3);
+        int skibidi = UnityEngine.Random.Range(1,4);
         if (skibidi == 1)
         {
-            Debug.Log("yooo");
             Instantiate(StunGunButtonPrefab, PannelForShop); 
         }
         else if (skibidi == 2)
         {
-            Debug.Log("yooo");
             Instantiate(GeneraterPrefab, PannelForShop);
+        }
+        else if (skibidi == 3)
+
+        {
+            Instantiate(MachineGunPrefab1, PannelForShop);
+        }
+        else if (skibidi == 4)
+        {
+            Instantiate(LazerGunPrefab, PannelForShop);
         }
 
     }

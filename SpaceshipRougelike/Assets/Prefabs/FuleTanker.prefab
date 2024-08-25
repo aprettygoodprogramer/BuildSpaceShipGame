@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1104067546570545958}
   - component: {fileID: 1739172051839934398}
   m_Layer: 0
-  m_Name: normalSpaceship 1
+  m_Name: FuleTanker
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
