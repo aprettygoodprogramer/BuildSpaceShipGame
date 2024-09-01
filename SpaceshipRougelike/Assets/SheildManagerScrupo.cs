@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEditor.Build;
+
 
 public class SheildManagerScrupo : MonoBehaviour
 {

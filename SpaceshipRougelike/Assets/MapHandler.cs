@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MapHandler : MonoBehaviour
 {
     //1 = where you are
-
+    public AudioSource AS;
 
     int[] MapList = {0, 0, 0, 0, 0, 0, 0,
                      1, 0, 0, 0, 0, 0, 0,
@@ -29,5 +29,9 @@ public class MapHandler : MonoBehaviour
     public void nextSence()
     {
         SceneManager.LoadScene(2);
+    }
+    public void playSound()
+    {
+        AS.Play();
     }
 }

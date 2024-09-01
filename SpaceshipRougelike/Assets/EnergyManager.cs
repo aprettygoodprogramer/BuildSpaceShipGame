@@ -52,7 +52,10 @@ public class EnergyManager : MonoBehaviour
 
 
     }
-
+    public void AddEnergy()
+    {
+        currentEnergy = maxEnergy; 
+    }       
     void RegenerateEnergy()
     {
         if (currentEnergy < maxEnergy)

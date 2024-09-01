@@ -951,7 +951,7 @@ GameObject:
   - component: {fileID: -2988727266771636449}
   - component: {fileID: -7043181099685256086}
   m_Layer: 5
-  m_Name: StunGun 1
+  m_Name: LazerGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

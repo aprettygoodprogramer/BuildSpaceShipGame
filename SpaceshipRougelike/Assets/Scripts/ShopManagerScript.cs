@@ -17,6 +17,7 @@ public class ShopManagerScript : MonoBehaviour
     public GameObject StunGunPrefab;
     public GameObject Generator;
     public GameObject MachineGunPrefab;
+    public GameObject PowerSynth; 
     public GameObject LazerGunPrefab;
     public bool needsArmory = true;
     public BuildingSystemAmtHandler BsAh;
@@ -87,6 +88,12 @@ public class ShopManagerScript : MonoBehaviour
         BsAh.setCurrAdd(8);
         HSS.ChangeMuchHull(1);
     }
+    public void setPowerSynth()
+    {
+        placingScript.SetPrefab(PowerSynth, 3, 1, 0, 5, 7, false, false, false);
+        BsAh.setCurrAdd(9);
+        HSS.ChangeMuchHull(3);
+    }
     public bool getArmory()
     {
         return needsArmory;
@@ -109,6 +116,10 @@ public class ShopManagerScript : MonoBehaviour
                 Pg2.SetActive(true);
                 Pg1.SetActive(false);
             }
+            if (currentShopIndex>1)
+            {
+                currentShopIndex = 1;
+            }
         }
     }
     public void IncreaseShopIndex()
@@ -118,7 +129,7 @@ public class ShopManagerScript : MonoBehaviour
     }
     public void DecreaseShopIndex()
     {
-        if (currentShopIndex > -1)
+        if (currentShopIndex > 0)
         {
             currentShopIndex -= 1;
             audioSource.Play();

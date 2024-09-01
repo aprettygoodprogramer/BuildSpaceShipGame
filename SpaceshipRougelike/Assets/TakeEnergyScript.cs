@@ -7,6 +7,7 @@ public class TakeEnergyScript : MonoBehaviour
 {
     private EnergyManager EM;
     private EnemyAiScript EAS;
+    private CurrencyHandler CH;
     private SheildManagerScrupo SMS;
     public float EnergyConsumed  = 30f;
     private bool hasGot = false;
@@ -15,6 +16,10 @@ public class TakeEnergyScript : MonoBehaviour
 
     void Start()
     {
+
+        GameObject CHObject = GameObject.Find("CuurencyHolder");
+        CH = CHObject.GetComponent<CurrencyHandler>();
+
         GameObject EMObject = GameObject.Find("EnemyAiManager");
         EAS = EMObject.GetComponent<EnemyAiScript>();
 
@@ -53,6 +58,9 @@ public class TakeEnergyScript : MonoBehaviour
         
         EAS.StunEnemy(10f);
     }
-    
+    public void GiveEnergy()
+    {
+        CH.GiveEnergyForFule();
+    }
     
 }

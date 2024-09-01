@@ -8,6 +8,7 @@ public class PlayerUiManagerBattleScript : MonoBehaviour
     public BuildingSystemAmtHandler BSAH;
     public GameObject BasicGunButtonPrefab;
     public GameObject SheildButton;
+    public GameObject PowerSynth;
     public GameObject Machinegunbutton;
     public GameObject LazerGunButton;
     public Transform buttonParent;
@@ -65,6 +66,10 @@ public class PlayerUiManagerBattleScript : MonoBehaviour
         if (BSAH.getAmount(7) != 0)
         {
             Instantiate(LazerGunButton, buttonParent);
+        }
+        if (BSAH.getAmount(8) != 0)
+        {
+            Instantiate(PowerSynth, buttonParent);
         }
     }
 

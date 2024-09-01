@@ -12,6 +12,8 @@ public class BlueprintManagerScript : MonoBehaviour
     public GameObject GeneraterPrefab;
     public GameObject LazerGun;
     public GameObject LazerGunPrefab;
+    public GameObject PowerSynth;
+    public GameObject PowerSynthPrefab;
     public GameObject GeneraterButon;
     public GameObject MachinegunButtonPregab;
     public GameObject MachineGunPrefab1;
@@ -34,9 +36,9 @@ public class BlueprintManagerScript : MonoBehaviour
         //int chance = UnityEngine.Random.Range(1, 3);
         
         
-            deez = UnityEngine.Random.Range(1, 5);
+            deez = UnityEngine.Random.Range(1, 6);
 
-            if (UnlockedBlueprints.Count >= 4)
+            if (UnlockedBlueprints.Count >= 5)
             {
 
             }
@@ -44,7 +46,7 @@ public class BlueprintManagerScript : MonoBehaviour
             {
                 while (UnlockedBlueprints.Contains(deez))
                 {
-                    deez = UnityEngine.Random.Range(1, 5);
+                    deez = UnityEngine.Random.Range(1, 6);
                 }
 
                 UnlockedBlueprints.Add(deez);
@@ -87,6 +89,10 @@ public class BlueprintManagerScript : MonoBehaviour
             {
                 LazerGun.SetActive(true);
             }
+            if (i == 5)
+            {
+                PowerSynth.SetActive(true);
+            }
         }
     }
     void SaveBlueprints()
@@ -97,6 +103,17 @@ public class BlueprintManagerScript : MonoBehaviour
     }
     public void DeleteSaveData()
     {
+        StunGunButton.SetActive(false);
+
+
+        GeneraterButon.SetActive(false);
+        PowerSynth.SetActive(false);
+
+        MachinegunButtonPregab.SetActive(false);
+
+        LazerGun.SetActive(false);
+
+        PowerSynth.SetActive(false);
         PlayerPrefs.DeleteAll();
     }
 
@@ -120,11 +137,15 @@ public class BlueprintManagerScript : MonoBehaviour
         {
             Instantiate(LazerGunPrefab, Pannel);
         }
+        if (deez == 5)
+        {
+            Instantiate(PowerSynth, Pannel);
+        }
 
     }
     public void showBlueprintUiShop()
     {
-        int skibidi = UnityEngine.Random.Range(1,4);
+        int skibidi = UnityEngine.Random.Range(1,6);
         if (skibidi == 1)
         {
             Instantiate(StunGunButtonPrefab, PannelForShop); 
@@ -142,6 +163,32 @@ public class BlueprintManagerScript : MonoBehaviour
         {
             Instantiate(LazerGunPrefab, PannelForShop);
         }
+        else if (skibidi == 5)
+        {
+            Instantiate(PowerSynthPrefab, PannelForShop);
+        }
+
+    }
+    public void UnlockAllBlueprints()
+    {
+
+        StunGunButton.SetActive(true);
+
+
+        GeneraterButon.SetActive(true);
+        PowerSynth.SetActive(true);
+
+        MachinegunButtonPregab.SetActive(true);
+
+        LazerGun.SetActive(true);
+
+        PowerSynth.SetActive(true);
+        UnlockedBlueprints.Add(1);
+        UnlockedBlueprints.Add(2);
+        UnlockedBlueprints.Add(3);
+        UnlockedBlueprints.Add(4);
+        UnlockedBlueprints.Add(5);
+        SaveBlueprints();
 
     }
 }

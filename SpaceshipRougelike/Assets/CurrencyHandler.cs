@@ -13,7 +13,7 @@ public class CurrencyHandler : MonoBehaviour
     int AdvancedPartsAmt = 1000;
     int MilkyWayDollarsAmt = 1000;
     public TextMeshProUGUI textToFade;
-
+    public EnergyManager EM;
 
     public TextMeshProUGUI textToFade2;
 
@@ -246,5 +246,21 @@ public class CurrencyHandler : MonoBehaviour
         return isInMenu;
     }
 
+    public void GiveEnergyForFule()
+    {
+        if (FuleAmt >= 7)
+        {
+            EM.AddEnergy();
+            FuleAmt -= 7; 
 
+        }
+    }
+    public void GiveMoney()
+    {
+         LothoniumAmt = 1000;
+         RawMaterialsAmt = 1000;
+         FuleAmt = 1000;
+         AdvancedPartsAmt = 1000;
+         MilkyWayDollarsAmt = 1000;
+    }
 }

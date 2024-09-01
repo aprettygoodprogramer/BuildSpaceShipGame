@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class BuildingSystemAmtHandler : MonoBehaviour
@@ -14,6 +15,7 @@ public class BuildingSystemAmtHandler : MonoBehaviour
     private int amtGenerator;
     private int amtMachineGun;
     private int amtLazerGun;
+    private int amtPowerSynth;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +61,10 @@ public class BuildingSystemAmtHandler : MonoBehaviour
         {
             return amtLazerGun;
         }
+        if (whatKind == 8)
+        {
+            return amtPowerSynth;
+        }
 
         return 0;
     }
@@ -103,6 +109,10 @@ public class BuildingSystemAmtHandler : MonoBehaviour
         if (currAdd == 8)
         {
             amtLazerGun++;
+        }
+        if (currAdd == 9)
+        {
+            amtPowerSynth++;
         }
     }
 
